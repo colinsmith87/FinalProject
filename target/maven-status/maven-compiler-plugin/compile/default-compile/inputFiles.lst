@@ -4,5 +4,6 @@
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Stores.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Transactions.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Employee.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/InStock.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/util/HibernateUtil.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Dependent.java

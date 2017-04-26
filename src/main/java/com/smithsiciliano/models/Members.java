@@ -14,9 +14,8 @@ public class Members implements java.io.Serializable {
 	private String storeLoc;
 	
 	
-	public Members(int memberId, String fName, String lName, Date dateOfBirth, long phone, int points,
+	public Members(String fName, String lName, Date dateOfBirth, long phone, int points,
 			String storeLoc) {
-		this.memberId = memberId;
 		this.fName = fName;
 		this.lName = lName;
 		this.dateOfBirth = dateOfBirth;

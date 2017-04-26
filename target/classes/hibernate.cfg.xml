@@ -10,11 +10,12 @@
 		<property name="hibernate.connection.password">csrocks33</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="show_sql">true</property>
-		<mapping resource="com/smithsiciliano/dependent/Dependent.hbm.xml"></mapping>
-		<mapping resource="com/smithsiciliano/employee/Employee.hbm.xml"></mapping>
-		<mapping resource="com/smithsiciliano/food/Food.hbm.xml"></mapping>
-		<mapping resource="com/smithsiciliano/members/Members.hbm.xml"></mapping>
-		<mapping resource="com/smithsiciliano/store/Stores.hbm.xml"></mapping>
-		<mapping resource="com/smithsiciliano/transactions/Transactions.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/Dependent.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/Employee.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/Food.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/Members.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/Stores.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/Transactions.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/InStock.hbm.xml"></mapping>
 	</session-factory>
 </hibernate-configuration>

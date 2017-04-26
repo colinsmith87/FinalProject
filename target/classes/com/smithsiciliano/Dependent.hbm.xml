@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.smithsiciliano.models.Dependent" table="DEPENDENT">
+		<composite-id>
+			<key-property name="empId" type="int">
+				<column name="EMPID" length="4" not-null="true" />
+			</key-property>
+			<key-property name="fName" type="string">
+				<column name="FNAME" length="255" not-null="true" />
+			</key-property>
+			<key-property name="lName" type="string">
+				<column name="LNAME" length="255" not-null="true" />
+			</key-property>
+		</composite-id>
+		<property name="relation" type="string">
+			<column name="RELATION" length="255" not-null="true" />
+		</property>
+		<property name="phone" type="long">
+			<column name="PHONE" length="10" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>
