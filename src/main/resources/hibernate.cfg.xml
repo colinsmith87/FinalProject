@@ -16,5 +16,6 @@
 		<mapping resource="com/smithsiciliano/Members.hbm.xml"></mapping>
 		<mapping resource="com/smithsiciliano/Stores.hbm.xml"></mapping>
 		<mapping resource="com/smithsiciliano/Transactions.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/InStock.hbm.xml"></mapping>
 	</session-factory>
 </hibernate-configuration>
