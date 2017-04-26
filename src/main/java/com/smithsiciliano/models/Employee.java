@@ -5,6 +5,7 @@ import java.util.Date;
 @SuppressWarnings("serial")
 public class Employee implements java.io.Serializable {
 	
+
 	private int employeeId;
 	private String fName;
 	private String lName;
@@ -17,8 +18,19 @@ public class Employee implements java.io.Serializable {
 	private Date dateOfBirth;
 	private String storeLoc;
 	
-	public Employee() {
-		
+	public Employee(int employeeId, String fName, String lName, int salary, long phone, String street, String city,
+			String addState, int zip, Date dateOfBirth, String storeLoc) {
+		this.employeeId = employeeId;
+		this.fName = fName;
+		this.lName = lName;
+		this.salary = salary;
+		this.phone = phone;
+		this.street = street;
+		this.city = city;
+		this.addState = addState;
+		this.zip = zip;
+		this.dateOfBirth = dateOfBirth;
+		this.storeLoc = storeLoc;
 	}
 	
 	public int getEmployeeId() {

@@ -6,9 +6,11 @@ public class Transactions implements java.io.Serializable {
 	private double price;
 	private String foodItem;
 	private String storeLoc;
-	
-	public Transactions() {
-		
+
+	public Transactions(double price, String foodItem, String storeLoc) {
+		this.price = price;
+		this.foodItem = foodItem;
+		this.storeLoc = storeLoc;
 	}
 
 	public double getPrice() {

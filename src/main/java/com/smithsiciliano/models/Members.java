@@ -13,10 +13,18 @@ public class Members implements java.io.Serializable {
 	private int points;
 	private String storeLoc;
 	
-	public Members() {
-		
-	}
 	
+	public Members(int memberId, String fName, String lName, Date dateOfBirth, long phone, int points,
+			String storeLoc) {
+		this.memberId = memberId;
+		this.fName = fName;
+		this.lName = lName;
+		this.dateOfBirth = dateOfBirth;
+		this.phone = phone;
+		this.points = points;
+		this.storeLoc = storeLoc;
+	}
+
 	public int getMemberId() {
 		return memberId;
 	}

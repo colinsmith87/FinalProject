@@ -5,8 +5,8 @@ public class Stores implements java.io.Serializable {
 	
 	private String sLocation;
 	
-	public Stores() {
-		
+	public Stores(String sLocation) {
+		this.sLocation = sLocation;
 	}
 
 	public String getsLocation() {

@@ -9,8 +9,12 @@ public class Dependent implements java.io.Serializable {
 	private long phone;
 	private int empId;
 	
-	public Dependent() {
-		
+	public Dependent(String fName, String lName, String relation, long phone, int empId) {
+		this.fName = fName;
+		this.lName = lName;
+		this.relation = relation;
+		this.phone = phone;
+		this.empId = empId;
 	}
 
 	public String getfName() {
