@@ -4,16 +4,17 @@
 <hibernate-mapping>
     <class name="com.smithsiciliano.models.Transactions" table="TRANSACTIONS">
         <id name="transactionId" type="int">
+        	<column name="TRANSACTIONID"/>
             <generator class="increment" />
         </id>
         <property name="price" type="double">
-        	<column name="PRICE"/>
+        	<column name="PRICE" precision="4" scale="2" not-null="true"/>
         </property>
         <property name="foodItem" type="string">
-        	<column name="FOODITEM"/>
+        	<column name="FOODITEM" length="255" not-null="true"/>
         </property>
         <property name="storeLoc" type="string">
-        	<column name="STORELOC"/>
+        	<column name="STORELOC" length="255" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

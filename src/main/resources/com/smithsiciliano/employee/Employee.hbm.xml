@@ -4,37 +4,38 @@
 <hibernate-mapping>
     <class name="com.smithsiciliano.models.Employee" table="EMPLOYEE">
         <id name="employeeId" type="int">
+        	<column name="EMPLOYEEID"/>
             <generator class="increment" />
         </id>
         <property name="fName" type="string">
-        	<column name="FNAME"/>
+        	<column name="FNAME" length="255" not-null="true"/>
         </property>
         <property name="lName" type="string">
-        	<column name="LNAME"/>
+        	<column name="LNAME" length="255" not-null="true"/>
         </property>
         <property name="salary" type="int">
-        	<column name="SALARY"/>
+        	<column name="SALARY" not-null="true"/>
         </property>
         <property name="phone" type="long">
-        	<column name="PHONE"/>
+        	<column name="PHONE" length="10" not-null="true"/>
         </property>
         <property name="street" type="string">
-        	<column name="STREET"/>
+        	<column name="STREET" length="255" not-null="true"/>
         </property>
         <property name="city" type="string">
-        	<column name="CITY"/>
+        	<column name="CITY" length="255" not-null="true"/>
         </property>
         <property name="addState" type="string">
-        	<column name="ADDSTATE"/>
+        	<column name="ADDSTATE" length="255" not-null="true"/>
         </property>
         <property name="zip" type="int">
-        	<column name="ZIP"/>
+        	<column name="ZIP" length="5" not-null="true"/>
         </property>
         <property name="dateOfBirth" type="string">
-        	<column name="DATEOFBIRTH"/>
+        	<column name="DATEOFBIRTH" not-null="true"/>
         </property>
         <property name="storeLoc" type="string">
-        	<column name="STORELOC"/>
+        	<column name="STORELOC" length="255" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

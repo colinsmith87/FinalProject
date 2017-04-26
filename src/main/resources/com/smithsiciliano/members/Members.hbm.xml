@@ -4,25 +4,26 @@
 <hibernate-mapping>
     <class name="com.smithsiciliano.models.Members" table="MEMBERS">
         <id name="memberId" type="int">
+        	<column name="MEMBERID"/>
             <generator class="increment"/>
         </id>
         <property name="fName" type="string">
-        	<column name="FNAME"/>
+        	<column name="FNAME" length="255" not-null="true"/>
         </property>
         <property name="lName" type="string">
-        	<column name="LNAME"/>
+        	<column name="LNAME" length="255" not-null="true"/>
         </property>
         <property name="dateOfBirth" type="string">
-        	<column name="DATEOFBIRTH"/>
+        	<column name="DATEOFBIRTH" not-null="true"/>
         </property>
         <property name="phone" type="long">
-        	<column name="PHONE"/>
+        	<column name="PHONE" length="10" not-null="true"/>
         </property>
         <property name="points" type="int">
         	<column name="POINTS"/>
         </property>
         <property name="storeLoc" type="string">
-        	<column name="STORELOC"/>
+        	<column name="STORELOC" length="255" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

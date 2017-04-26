@@ -4,22 +4,23 @@
 <hibernate-mapping>
     <class name="com.smithsiciliano.models.Dependent" table="DEPENDENT">
         <id name="dependentId" type="int">
+        	<column name="DEPENDENTID"/>
             <generator class="increment" />
         </id>
         <property name="fName" type="string">
-        	<column name="FNAME"/>
+        	<column name="FNAME" length="255" not-null="true"/>
         </property>
         <property name="lName" type="string">
-        	<column name="LNAME"/>
+        	<column name="LNAME" length="255" not-null="true"/>
         </property>
         <property name="relation" type="string">
-        	<column name="RELATION"/>
+        	<column name="RELATION" length="255" not-null="true"/>
         </property>
         <property name="phone" type="long">
-        	<column name="PHONE"/>
+        	<column name="PHONE" length="10" not-null="true"/>
         </property>
         <property name="empId" type="int">
-        	<column name="EMPID"/>
+        	<column name="EMPID" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

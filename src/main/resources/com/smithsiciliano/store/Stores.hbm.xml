@@ -4,10 +4,11 @@
 <hibernate-mapping>
     <class name="com.smithsiciliano.models.Stores" table="STORES">
         <id name="storeId" type="int">
+        	<column name="STOREID"/>
             <generator class="increment" />
         </id>
         <property name="sLocation" type="string">
-        	<column name="SLOCATION"/>
+        	<column name="SLOCATION" length="255" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>
