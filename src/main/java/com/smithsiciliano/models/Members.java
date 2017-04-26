@@ -7,7 +7,7 @@ public class Members implements java.io.Serializable {
 	private String fName;
 	private String lName;
 	private String dateOfBirth;
-	private int phone;
+	private long phone;
 	private int points;
 	private String storeLoc;
 	
@@ -47,11 +47,11 @@ public class Members implements java.io.Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 

@@ -7,7 +7,7 @@ public class Dependent implements java.io.Serializable {
 	private String fName;
 	private String lName;
 	private String relation;
-	private int phone;
+	private long phone;
 	private int empId;
 	
 	public Dependent() {
@@ -46,11 +46,11 @@ public class Dependent implements java.io.Serializable {
 		this.relation = relation;
 	}
 
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 

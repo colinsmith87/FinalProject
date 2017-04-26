@@ -6,5 +6,8 @@
         <id name="storeId" type="int">
             <generator class="increment" />
         </id>
+        <property name="sLocation" type="string">
+        	<column name="SLOCATION"/>
+        </property>
     </class>
 </hibernate-mapping>

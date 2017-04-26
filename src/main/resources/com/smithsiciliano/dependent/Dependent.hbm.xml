@@ -6,5 +6,20 @@
         <id name="dependentId" type="int">
             <generator class="increment" />
         </id>
+        <property name="fName" type="string">
+        	<column name="FNAME"/>
+        </property>
+        <property name="lName" type="string">
+        	<column name="LNAME"/>
+        </property>
+        <property name="relation" type="string">
+        	<column name="RELATION"/>
+        </property>
+        <property name="phone" type="long">
+        	<column name="PHONE"/>
+        </property>
+        <property name="empId" type="int">
+        	<column name="EMPID"/>
+        </property>
     </class>
 </hibernate-mapping>

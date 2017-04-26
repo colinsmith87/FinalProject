@@ -7,7 +7,7 @@ public class Employee implements java.io.Serializable {
 	private String fName;
 	private String lName;
 	private int salary;
-	private int phone;
+	private long phone;
 	private String street;
 	private String city;
 	private String addState;
@@ -51,11 +51,11 @@ public class Employee implements java.io.Serializable {
 		this.salary = salary;
 	}
 
-	public int getPhone() {
+	public long getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(long phone) {
 		this.phone = phone;
 	}
 

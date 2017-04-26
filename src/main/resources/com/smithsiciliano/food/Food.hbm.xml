@@ -6,5 +6,14 @@
         <id name="foodId" type="int">
             <generator class="increment" />
         </id>
+        <property name="itemName" type="string">
+        	<column name="ITEMNAME"/>
+        </property>
+        <property name="price" type="double">
+        	<column name="PRICE"/>
+        </property>
+        <property name="sellBy" type="string">
+        	<column name="SELLBY"/>
+        </property>
     </class>
 </hibernate-mapping>
