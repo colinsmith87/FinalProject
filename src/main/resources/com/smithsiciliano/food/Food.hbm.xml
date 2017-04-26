@@ -3,13 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.smithsiciliano.models.Food" table="FOOD_ITEMS">
-        <id name="foodId" type="int">
-        	<column name="FOODID"/>
-            <generator class="increment" />
-        </id>
-        <property name="itemName" type="string">
+        <id name="itemName" type="string">
         	<column name="ITEMNAME" length="255" not-null="true"/>
-        </property>
+        </id>
         <property name="price" type="double">
         	<column name="PRICE" precision="4" scale="2" not-null="true"/>
         </property>

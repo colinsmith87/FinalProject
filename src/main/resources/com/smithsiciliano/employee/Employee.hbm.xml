@@ -2,40 +2,39 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.smithsiciliano.models.Employee" table="EMPLOYEE">
-        <id name="employeeId" type="int">
-        	<column name="EMPLOYEEID"/>
-            <generator class="increment" />
-        </id>
-        <property name="fName" type="string">
-        	<column name="FNAME" length="255" not-null="true"/>
-        </property>
-        <property name="lName" type="string">
-        	<column name="LNAME" length="255" not-null="true"/>
-        </property>
-        <property name="salary" type="int">
-        	<column name="SALARY" not-null="true"/>
-        </property>
-        <property name="phone" type="long">
-        	<column name="PHONE" length="10" not-null="true"/>
-        </property>
-        <property name="street" type="string">
-        	<column name="STREET" length="255" not-null="true"/>
-        </property>
-        <property name="city" type="string">
-        	<column name="CITY" length="255" not-null="true"/>
-        </property>
-        <property name="addState" type="string">
-        	<column name="ADDSTATE" length="255" not-null="true"/>
-        </property>
-        <property name="zip" type="int">
-        	<column name="ZIP" length="5" not-null="true"/>
-        </property>
-        <property name="dateOfBirth" type="date">
-        	<column name="DATEOFBIRTH" not-null="true"/>
-        </property>
-        <property name="storeLoc" type="string">
-        	<column name="STORELOC" length="255" not-null="true"/>
-        </property>
-    </class>
+	<class name="com.smithsiciliano.models.Employee" table="EMPLOYEE">
+		<id name="employeeId" type="int">
+			<column name="EMPLOYEEID" length="4" not-null="true" />
+		</id>
+		<property name="fName" type="string">
+			<column name="FNAME" length="255" not-null="true" />
+		</property>
+		<property name="lName" type="string">
+			<column name="LNAME" length="255" not-null="true" />
+		</property>
+		<property name="salary" type="int">
+			<column name="SALARY" not-null="true" />
+		</property>
+		<property name="phone" type="long">
+			<column name="PHONE" length="10" not-null="true" />
+		</property>
+		<property name="street" type="string">
+			<column name="STREET" length="255" not-null="true" />
+		</property>
+		<property name="city" type="string">
+			<column name="CITY" length="255" not-null="true" />
+		</property>
+		<property name="addState" type="string">
+			<column name="ADDSTATE" length="255" not-null="true" />
+		</property>
+		<property name="zip" type="int">
+			<column name="ZIP" length="5" not-null="true" />
+		</property>
+		<property name="dateOfBirth" type="date">
+			<column name="DATEOFBIRTH" not-null="true" />
+		</property>
+		<property name="storeLoc" type="string">
+			<column name="STORELOC" length="255" not-null="true" />
+		</property>
+	</class>
 </hibernate-mapping>

@@ -2,25 +2,23 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.smithsiciliano.models.Dependent" table="DEPENDENT">
-        <id name="dependentId" type="int">
-        	<column name="DEPENDENTID"/>
-            <generator class="increment" />
-        </id>
-        <property name="fName" type="string">
-        	<column name="FNAME" length="255" not-null="true"/>
-        </property>
-        <property name="lName" type="string">
-        	<column name="LNAME" length="255" not-null="true"/>
-        </property>
-        <property name="relation" type="string">
-        	<column name="RELATION" length="255" not-null="true"/>
-        </property>
-        <property name="phone" type="long">
-        	<column name="PHONE" length="10" not-null="true"/>
-        </property>
-        <property name="empId" type="int">
-        	<column name="EMPID" not-null="true"/>
-        </property>
-    </class>
+	<class name="com.smithsiciliano.models.Dependent" table="DEPENDENT">
+		<composite-id>
+			<key-property name="empId" type="int">
+				<column name="EMPID" length="4" not-null="true" />
+			</key-property>
+			<key-property name="fName" type="string">
+				<column name="FNAME" length="255" not-null="true" />
+			</key-property>
+			<key-property name="lName" type="string">
+				<column name="LNAME" length="255" not-null="true" />
+			</key-property>
+		</composite-id>
+		<property name="relation" type="string">
+			<column name="RELATION" length="255" not-null="true" />
+		</property>
+		<property name="phone" type="long">
+			<column name="PHONE" length="10" not-null="true" />
+		</property>
+	</class>
 </hibernate-mapping>

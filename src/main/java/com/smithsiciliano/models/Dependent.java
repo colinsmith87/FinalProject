@@ -3,7 +3,6 @@ package com.smithsiciliano.models;
 @SuppressWarnings("serial")
 public class Dependent implements java.io.Serializable {
 	
-	private int dependentId;
 	private String fName;
 	private String lName;
 	private String relation;
@@ -12,14 +11,6 @@ public class Dependent implements java.io.Serializable {
 	
 	public Dependent() {
 		
-	}
-	
-	public int getDependentId() {
-		return dependentId;
-	}
-	
-	public void setDependentId(int dependentId) {
-		this.dependentId = dependentId;
 	}
 
 	public String getfName() {
