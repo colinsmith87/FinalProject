@@ -31,7 +31,7 @@
         <property name="zip" type="int">
         	<column name="ZIP" length="5" not-null="true"/>
         </property>
-        <property name="dateOfBirth" type="string">
+        <property name="dateOfBirth" type="date">
         	<column name="DATEOFBIRTH" not-null="true"/>
         </property>
         <property name="storeLoc" type="string">

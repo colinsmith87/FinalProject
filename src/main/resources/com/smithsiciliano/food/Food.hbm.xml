@@ -13,7 +13,7 @@
         <property name="price" type="double">
         	<column name="PRICE" precision="4" scale="2" not-null="true"/>
         </property>
-        <property name="sellBy" type="string">
+        <property name="sellBy" type="date">
         	<column name="SELLBY" not-null="true"/>
         </property>
     </class>

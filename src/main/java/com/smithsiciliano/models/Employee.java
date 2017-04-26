@@ -1,5 +1,7 @@
 package com.smithsiciliano.models;
 
+import java.util.Date;
+
 @SuppressWarnings("serial")
 public class Employee implements java.io.Serializable {
 	
@@ -12,7 +14,7 @@ public class Employee implements java.io.Serializable {
 	private String city;
 	private String addState;
 	private int zip;
-	private String dateOfBirth;
+	private Date dateOfBirth;
 	private String storeLoc;
 	
 	public Employee() {
@@ -99,11 +101,11 @@ public class Employee implements java.io.Serializable {
 		this.storeLoc = storeLoc;
 	}
 
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 }

@@ -13,7 +13,7 @@
         <property name="lName" type="string">
         	<column name="LNAME" length="255" not-null="true"/>
         </property>
-        <property name="dateOfBirth" type="string">
+        <property name="dateOfBirth" type="date">
         	<column name="DATEOFBIRTH" not-null="true"/>
         </property>
         <property name="phone" type="long">

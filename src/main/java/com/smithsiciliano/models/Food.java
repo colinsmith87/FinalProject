@@ -1,12 +1,14 @@
 package com.smithsiciliano.models;
 
+import java.util.Date;
+
 @SuppressWarnings("serial")
 public class Food implements java.io.Serializable {
 	
 	private int foodId;
 	private String itemName;
 	private double price;
-	private String sellBy;
+	private Date sellBy;
 	
 	public Food() {
 		
@@ -36,11 +38,11 @@ public class Food implements java.io.Serializable {
 		this.price = price;
 	}
 
-	public String getSellBy() {
+	public Date getSellBy() {
 		return sellBy;
 	}
 
-	public void setSellBy(String sellBy) {
+	public void setSellBy(Date sellBy) {
 		this.sellBy = sellBy;
 	}
 }
