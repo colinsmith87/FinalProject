@@ -2,9 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.smithsiciliano.models.Store" table="STORE">
+    <class name="com.smithsiciliano.models.Stores" table="STORES">
         <id name="storeId" type="int">
             <generator class="increment" />
         </id>
+        <property name="sLocation" type="string">
+        	<column name="SLOCATION"/>
+        </property>
     </class>
 </hibernate-mapping>

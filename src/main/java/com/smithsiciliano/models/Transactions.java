@@ -16,7 +16,7 @@ public class Transactions implements java.io.Serializable {
 		return transactionId;
 	}
 	
-	public void getTransactionId(int transactionId) {
+	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
 

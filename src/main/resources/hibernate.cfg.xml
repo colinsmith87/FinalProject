@@ -3,18 +3,18 @@
 "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory>
-  <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
-  <property name="hibernate.connection.url">jdbc:oracle:thin:csmith5/csrocks33@//CSC325.CJJVANPHIB99.US-WEST-2.RDS.AMAZONAWS.COM:1521/ORCL</property>
-  <property name="hibernate.connection.username">csmith5</property>
-  <property name="hibernate.connection.password">csrocks33</property>
-  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
-  <property name="show_sql">true</property>
-  <mapping resource="com/smithsiciliano/dependent/Dependent.hbm.xml"></mapping>
-  <mapping resource="com/smithsiciliano/employee/Employee.hbm.xml"></mapping>
-  <mapping resource="com/smithsiciliano/food/Food.hbm.xml"></mapping>
-  <mapping resource="com/smithsiciliano/members/Members.hbm.xml"></mapping>
-  <mapping resource="com/smithsiciliano/store/Store.hbm.xml"></mapping>
-  <mapping resource="com/smithsiciliano/transactions/Transactions.hbm.xml"></mapping>
-</session-factory>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:csmith5/csrocks33@//CSC325.CJJVANPHIB99.US-WEST-2.RDS.AMAZONAWS.COM:1521/ORCL</property>
+		<property name="hibernate.connection.username">csmith5</property>
+		<property name="hibernate.connection.password">csrocks33</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<property name="show_sql">true</property>
+		<mapping resource="com/smithsiciliano/dependent/Dependent.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/employee/Employee.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/food/Food.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/members/Members.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/store/Stores.hbm.xml"></mapping>
+		<mapping resource="com/smithsiciliano/transactions/Transactions.hbm.xml"></mapping>
+	</session-factory>
 </hibernate-configuration>

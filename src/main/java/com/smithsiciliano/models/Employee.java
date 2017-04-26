@@ -23,7 +23,7 @@ public class Employee implements java.io.Serializable {
 		return employeeId;
 	}
 	
-	public void getEmployeeId(int employeeId) {
+	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
 	}
 

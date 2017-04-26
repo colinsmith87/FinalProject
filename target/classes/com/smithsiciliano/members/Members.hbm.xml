@@ -2,9 +2,27 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.smithsiciliano.models.Members" table="MEMBER">
+    <class name="com.smithsiciliano.models.Members" table="MEMBERS">
         <id name="memberId" type="int">
-            <generator class="increment" />
+            <generator class="increment"/>
         </id>
+        <property name="fName" type="string">
+        	<column name="FNAME"/>
+        </property>
+        <property name="lName" type="string">
+        	<column name="LNAME"/>
+        </property>
+        <property name="dateOfBirth" type="string">
+        	<column name="DATEOFBIRTH"/>
+        </property>
+        <property name="phone" type="long">
+        	<column name="PHONE"/>
+        </property>
+        <property name="points" type="int">
+        	<column name="POINTS"/>
+        </property>
+        <property name="storeLoc" type="string">
+        	<column name="STORELOC"/>
+        </property>
     </class>
 </hibernate-mapping>

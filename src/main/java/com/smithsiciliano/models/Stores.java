@@ -14,7 +14,7 @@ public class Stores implements java.io.Serializable {
 		return storeId;
 	}
 	
-	public void getStoreId(int storeId) {
+	public void setStoreId(int storeId) {
 		this.storeId = storeId;
 	}
 
