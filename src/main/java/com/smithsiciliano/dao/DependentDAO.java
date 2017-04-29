@@ -21,7 +21,7 @@ public class DependentDAO {
 		return list;
 	}
 	
-	public List<Dependent> selectByEmployee(String empId) {
+	public List<Dependent> selectByEmployeeId(int empId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
