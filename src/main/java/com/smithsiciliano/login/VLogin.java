@@ -1,9 +1,10 @@
-package com.smithsiciliano;
+package com.smithsiciliano.login;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +32,7 @@ public class VLogin extends JFrame{
 	private ActionListener newEmployeeButtonListener = null;
 	
 	public VLogin(CLogin controllerRef) {
-		super("Login");
+		super("Grocery Store Management System");
 		this.controllerRef = controllerRef;
 	}
 	
@@ -53,15 +54,22 @@ public class VLogin extends JFrame{
 	
 	public void initUI() {
 		setPreferredSize(new Dimension(700,500));
+		setLayout(new GridBagLayout());
 		
 		panel = new JPanel();
+		panel.setPreferredSize(new Dimension(350,250));
 		panel.setLayout(new GridBagLayout());
 		panel.setBorder(BorderFactory.createTitledBorder("Login"));
+		GridBagConstraints panelGBC = new GridBagConstraints();
+		panelGBC.gridx = 0;
+		panelGBC.gridy = 0;
+		panelGBC.anchor = GridBagConstraints.CENTER;
 		
-		employeeIdLabel = new JLabel("Employee ID: ");
+		employeeIdLabel = new JLabel("Employee ID:");
 		GridBagConstraints employeeIdLabelGBC = new GridBagConstraints();
 		employeeIdLabelGBC.gridx = 0;
 		employeeIdLabelGBC.gridy = 0;
+		employeeIdLabelGBC.insets = new Insets(0,0,0,5);
 		employeeIdLabelGBC.anchor = GridBagConstraints.WEST;
 		panel.add(employeeIdLabel,employeeIdLabelGBC);
 		
@@ -70,6 +78,7 @@ public class VLogin extends JFrame{
 		GridBagConstraints employeeIdTFGBC = new GridBagConstraints();
 		employeeIdTFGBC.gridx = 1;
 		employeeIdTFGBC.gridy = 0;
+		employeeIdTFGBC.insets = new Insets(0,0,0,0);
 		employeeIdTFGBC.anchor = GridBagConstraints.WEST;
 		panel.add(employeeIdTF,employeeIdTFGBC);
 		
@@ -78,18 +87,22 @@ public class VLogin extends JFrame{
 		GridBagConstraints loginButtonGBC = new GridBagConstraints();
 		loginButtonGBC.gridx = 0;
 		loginButtonGBC.gridy = 1;
-		loginButtonGBC.anchor = GridBagConstraints.WEST;
+		loginButtonGBC.gridwidth = 2;
+		loginButtonGBC.insets = new Insets(5,0,0,0);
+		loginButtonGBC.anchor = GridBagConstraints.CENTER;
 		panel.add(loginButton,loginButtonGBC);
 		
 		newEmployeeButton = new JButton("New Employee");
-		newEmployeeButton.setPreferredSize(new Dimension(100,20));
+		newEmployeeButton.setPreferredSize(new Dimension(150,20));
 		GridBagConstraints newEmployeeButtonGBC = new GridBagConstraints();
-		newEmployeeButtonGBC.gridx = 1;
-		newEmployeeButtonGBC.gridy = 1;
-		newEmployeeButtonGBC.anchor = GridBagConstraints.WEST;
+		newEmployeeButtonGBC.gridx = 0;
+		newEmployeeButtonGBC.gridy = 2;
+		newEmployeeButtonGBC.gridwidth = 2;
+		newEmployeeButtonGBC.insets = new Insets(5,0,0,0);
+		newEmployeeButtonGBC.anchor = GridBagConstraints.CENTER;
 		panel.add(newEmployeeButton,newEmployeeButtonGBC);
 		
-		add(panel,BorderLayout.CENTER);
+		add(panel,panelGBC);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();

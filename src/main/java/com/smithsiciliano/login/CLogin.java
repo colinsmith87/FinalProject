@@ -1,4 +1,4 @@
-package com.smithsiciliano;
+package com.smithsiciliano.login;
 
 import com.smithsiciliano.dao.EmployeeDAO;
 
@@ -14,7 +14,7 @@ public class CLogin {
 	public void init() {
 		dao = new EmployeeDAO();
 		viewRef = new VLogin(this);
-		viewRef.initListeners();
 		viewRef.initUI();
+		viewRef.initListeners();
 	}
 }

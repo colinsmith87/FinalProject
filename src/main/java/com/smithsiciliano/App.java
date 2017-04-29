@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.smithsiciliano.login.CLogin;
 import com.smithsiciliano.models.*;
 import com.smithsiciliano.util.HibernateUtil;
 
