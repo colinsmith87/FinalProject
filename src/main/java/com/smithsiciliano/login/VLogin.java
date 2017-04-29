@@ -50,6 +50,7 @@ public class VLogin extends JFrame{
 					}
 				}
 				catch (Exception err) {
+					System.out.println(err.getMessage());
 					//don't login
 				}
 			}

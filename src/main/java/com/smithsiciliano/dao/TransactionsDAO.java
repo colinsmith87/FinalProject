@@ -15,7 +15,7 @@ public class TransactionsDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 	    
-		Query query = session.createQuery("from TRANSACTIONS");
+		Query query = session.createQuery("from Transactions");
 		List<Transactions> list = query.list();
 		session.close();
 		return list;
@@ -25,7 +25,7 @@ public class TransactionsDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from TRANSACTIONS transaction where transaction.STORELOC=:transaction_STORELOC");
+		Query query = session.createQuery("from Transactions transaction where transaction.storeLoc=:transaction_STORELOC");
 		query.setParameter("transaction_STORELOC", sLocation);
 		List<Transactions> list = query.list();
 		session.close();
@@ -53,9 +53,9 @@ public class TransactionsDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from TRANSACTIONS transaction "
-					+ "where transaction.STORELOC=:transaction_STORELOC "
-					+ "AND transaction.FOODITEM=:transaction_FOODITEM");
+			Query query = session.createQuery("from Transactions transaction "
+					+ "where transaction.storeLoc=:transaction_STORELOC "
+					+ "AND transaction.foodItem=:transaction_FOODITEM");
 			query.setParameter("transaction_STORELOC", oldTransaction.getStoreLoc());
 			query.setParameter("transaction_FOODITEM", oldTransaction.getFoodItem());
 			List<Transactions> list = query.list();

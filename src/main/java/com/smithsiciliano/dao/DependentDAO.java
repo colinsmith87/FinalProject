@@ -15,7 +15,7 @@ public class DependentDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 	    
-		Query query = session.createQuery("from DEPENDENT");
+		Query query = session.createQuery("from Dependent");
 		List<Dependent> list = query.list();
 		session.close();
 		return list;
@@ -25,7 +25,7 @@ public class DependentDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from DEPENDENT dependent where dependent.EMPID=:dependent_EMPID");
+		Query query = session.createQuery("from Dependent dependent where dependent.empId=:dependent_EMPID");
 		query.setParameter("dependent_EMPID", empId);
 		List<Dependent> list = query.list();
 		session.close();
@@ -53,10 +53,10 @@ public class DependentDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from DEPENDENT dependent "
-					+ "where dependent.EMPID=:dependent_EMPID "
-					+ "AND dependent.FNAME=:dependent_FNAME "
-					+ "AND dependent.LNAME=:denendent_LNAME");
+			Query query = session.createQuery("from Dependent dependent "
+					+ "where dependent.empId=:dependent_EMPID "
+					+ "AND dependent.fName=:dependent_FNAME "
+					+ "AND dependent.lName=:denendent_LNAME");
 			query.setParameter("dependent_EMPID", oldDependent.getEmpId());
 			query.setParameter("dependent_FNAME", oldDependent.getfName());
 			query.setParameter("dependent_LNAME", oldDependent.getlName());

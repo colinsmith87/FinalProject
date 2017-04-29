@@ -18,6 +18,10 @@ public class Employee implements java.io.Serializable {
 	private Date dateOfBirth;
 	private String storeLoc;
 	
+	public Employee() {
+		
+	}
+
 	public Employee(int employeeId, String fName, String lName, int salary, long phone, String street, String city,
 			String addState, int zip, Date dateOfBirth, String storeLoc) {
 		this.employeeId = employeeId;

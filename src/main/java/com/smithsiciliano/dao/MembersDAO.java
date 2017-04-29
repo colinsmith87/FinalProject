@@ -15,7 +15,7 @@ public class MembersDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 	    
-		Query query = session.createQuery("from MEMBERS");
+		Query query = session.createQuery("from Members");
 		List<Members> list = query.list();
 		session.close();
 		return list;
@@ -25,7 +25,7 @@ public class MembersDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from MEMBERS member where member.MEMBERID=:member_MEMBERID");
+		Query query = session.createQuery("from Members member where member.memberId=:member_MEMBERID");
 		query.setParameter("member_MEMBERID", memberId);
 		List<Members> list = query.list();
 		session.close();
@@ -53,7 +53,7 @@ public class MembersDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from MEMBERS member where member.MEMBERID=:member_MEMBERID");
+			Query query = session.createQuery("from Members member where member.memberId=:member_MEMBERID");
 			query.setParameter("member_MEMBERID", oldMember.getMemberId());
 			List<Members> list = query.list();
 			

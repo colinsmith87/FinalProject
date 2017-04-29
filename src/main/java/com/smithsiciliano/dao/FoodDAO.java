@@ -15,7 +15,7 @@ public class FoodDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 	    
-		Query query = session.createQuery("from FOOD_ITEMS");
+		Query query = session.createQuery("from Food");
 		List<Food> list = query.list();
 		session.close();
 		return list;
@@ -25,7 +25,7 @@ public class FoodDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from FOOD_ITEMS food where food.ITEMNAME=:food_ITEMNAME");
+		Query query = session.createQuery("from Food food where food.itemName=:food_ITEMNAME");
 		query.setParameter("food_ITEMNAME", itemName);
 		List<Food> list = query.list();
 		session.close();
@@ -53,7 +53,7 @@ public class FoodDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from FOOD_ITEMS food where food.ITEMNAME=:food_ITEMNAME");
+			Query query = session.createQuery("from Food food where food.itemName=:food_ITEMNAME");
 			query.setParameter("food_ITEMNAME", oldFood.getItemName());
 			List<Food> list = query.list();
 			

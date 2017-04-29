@@ -6,6 +6,10 @@ public class InStock implements java.io.Serializable {
 	private int quantity;
 	private String storeLoc;
 	private String foodName;
+	
+	public InStock() {
+		
+	}
 
 	public InStock(int quantity, String storeLoc, String foodName) {
 		this.quantity = quantity;

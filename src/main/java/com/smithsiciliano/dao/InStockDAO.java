@@ -15,7 +15,7 @@ public class InStockDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 	    
-		Query query = session.createQuery("from IN_STOCK");
+		Query query = session.createQuery("from InStock");
 		List<InStock> list = query.list();
 		session.close();
 		return list;
@@ -25,9 +25,9 @@ public class InStockDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from IN_STOCK stock "
-				+ "where stock.FOODNAME=:stock_FOODNAME "
-				+ "AND stock.STORELOC=:stock_STORELOC");
+		Query query = session.createQuery("from InStock stock "
+				+ "where stock.foodName=:stock_FOODNAME "
+				+ "AND stock.storeLoc=:stock_STORELOC");
 		query.setParameter("stock_FOODNAME", foodName);
 		query.setParameter("stack_STORELOC", storeLoc);
 		List<InStock> list = query.list();
@@ -56,9 +56,9 @@ public class InStockDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from IN_STOCK stock "
-					+ "where stock.FOODNAME=:stock_FOODNAME "
-					+ "AND stock.STORELOC=:stock_STORELOC");
+			Query query = session.createQuery("from InStock stock "
+					+ "where stock.foodName=:stock_FOODNAME "
+					+ "AND stock.storeLoc=:stock_STORELOC");
 			query.setParameter("stock_FOODNAME", oldStock.getFoodName());
 			query.setParameter("stack_STORELOC", oldStock.getStoreLoc());
 			List<InStock> list = query.list();

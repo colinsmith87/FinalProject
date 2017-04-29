@@ -9,6 +9,10 @@ public class Food implements java.io.Serializable {
 	private double price;
 	private Date sellBy;
 	
+	public Food() {
+		
+	}
+	
 	public Food(String itemName, double price, Date sellBy) {
 		this.itemName = itemName;
 		this.price = price;

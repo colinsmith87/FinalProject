@@ -15,7 +15,7 @@ public class EmployeeDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 	    
-		Query query = session.createQuery("from EMPLOYEE");
+		Query query = session.createQuery("from Employee");
 		List<Employee> list = query.list();
 		session.close();
 		return list;
@@ -25,7 +25,7 @@ public class EmployeeDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from EMPLOYEE employee where employee.EMPLOYEEID=:employee_EMPLOYEEID");
+		Query query = session.createQuery("from Employee employee where employee.employeeId=:employee_EMPLOYEEID");
 		query.setParameter("employee_EMPLOYEEID", employeeId);
 		List<Employee> list = query.list();
 		session.close();
@@ -53,7 +53,7 @@ public class EmployeeDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from EMPLOYEE employee where employee.EMPLOYEEID=:employee_EMPLOYEEID");
+			Query query = session.createQuery("from Employee employee where employee.employeeId=:employee_EMPLOYEEID");
 			query.setParameter("employee_EMPLOYEEID", oldEmployee.getEmployeeId());
 			List<Employee> list = query.list();
 			
