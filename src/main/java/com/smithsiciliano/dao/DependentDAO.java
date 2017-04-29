@@ -55,8 +55,8 @@ public class DependentDAO {
 		try {
 			Query query = session.createQuery("from DEPENDENT dependent "
 					+ "where dependent.EMPID=:dependent_EMPID "
-					+ "AND where dependent.FNAME=:dependent_FNAME "
-					+ "AND where dependent.LNAME=:denendent_LNAME");
+					+ "AND dependent.FNAME=:dependent_FNAME "
+					+ "AND dependent.LNAME=:denendent_LNAME");
 			query.setParameter("dependent_EMPID", oldDependent.getEmpId());
 			query.setParameter("dependent_FNAME", oldDependent.getfName());
 			query.setParameter("dependent_LNAME", oldDependent.getlName());
