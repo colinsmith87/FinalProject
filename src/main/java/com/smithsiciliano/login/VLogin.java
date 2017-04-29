@@ -39,14 +39,26 @@ public class VLogin extends JFrame{
 	public void initListeners() {
 		loginButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				int employeeId = -1;
+				try {
+					employeeId = Integer.parseInt(employeeIdTF.getText());
+					if(controllerRef.login(employeeId)) {
+						//cleanup
+					}
+					else {
+						//don't login
+					}
+				}
+				catch (Exception err) {
+					//don't login
+				}
 			}
 		};
 		loginButton.addActionListener(loginButtonListener);
 		
 		newEmployeeButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				//launch register employee page
 			}
 		};
 		newEmployeeButton.addActionListener(newEmployeeButtonListener);

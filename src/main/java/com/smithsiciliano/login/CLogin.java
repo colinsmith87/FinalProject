@@ -1,6 +1,9 @@
 package com.smithsiciliano.login;
 
+import java.util.List;
+
 import com.smithsiciliano.dao.EmployeeDAO;
+import com.smithsiciliano.models.Employee;
 
 public class CLogin {
 	
@@ -16,5 +19,16 @@ public class CLogin {
 		viewRef = new VLogin(this);
 		viewRef.initUI();
 		viewRef.initListeners();
+	}
+	
+	public boolean login(int employeeId) {
+		List<Employee> employee = dao.selectByEmployeeId(employeeId);
+		if(employee.isEmpty()) {
+			return false;
+		}
+		else {
+			//launch new screen with this employee
+			return true;
+		}
 	}
 }
