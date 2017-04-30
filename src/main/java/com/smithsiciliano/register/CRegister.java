@@ -3,7 +3,6 @@ package com.smithsiciliano.register;
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.login.CLogin;
-import com.smithsiciliano.login.VLogin;
 
 public class CRegister {
 	

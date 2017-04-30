@@ -2,18 +2,10 @@ package com.smithsiciliano;
 
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
-import java.util.Date;
-import java.util.List;
 
 import javax.swing.JFrame;
 
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import com.smithsiciliano.login.CLogin;
-import com.smithsiciliano.models.*;
-import com.smithsiciliano.util.HibernateUtil;
 
 /**
  * Hello world!
