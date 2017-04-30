@@ -1,8 +1,11 @@
 package com.smithsiciliano;
 
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JFrame;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,12 +19,22 @@ import com.smithsiciliano.util.HibernateUtil;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-    	CLogin startApplication = new CLogin();
-    	
+public class App extends JFrame {
+	public App() {
+		super("Grocery Store Management System");
+    	setPreferredSize(new Dimension(700,500));
+		setLayout(new GridBagLayout());
+		
+    	CLogin startApplication = new CLogin(this);
+		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
+    public static void main( String[] args ) {
+    	App app = new App();
+    	    	
 //		Stores s = new Stores("Ipswich");
 //		Employee em = new Employee(0000,"Colin","Smith",65000,9785005381L,"61 High Street","Ipswich",
 //				"MA",1938,new Date(),"Ipswich");

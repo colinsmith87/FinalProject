@@ -12,12 +12,16 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class VLogin extends JFrame{
+import com.smithsiciliano.App;
+
+public class VLogin extends JPanel{
 	
 	private CLogin controllerRef = null;
+	private App mainFrameRef = null;
 	
 	private JPanel panel = null;
 	
@@ -31,9 +35,9 @@ public class VLogin extends JFrame{
 	private ActionListener loginButtonListener = null;
 	private ActionListener newEmployeeButtonListener = null;
 	
-	public VLogin(CLogin controllerRef) {
-		super("Grocery Store Management System");
+	public VLogin(CLogin controllerRef, App mainFrameRef) {
 		this.controllerRef = controllerRef;
+		this.mainFrameRef = mainFrameRef;
 	}
 	
 	public void initListeners() {
@@ -42,16 +46,13 @@ public class VLogin extends JFrame{
 				int employeeId = -1;
 				try {
 					employeeId = Integer.parseInt(employeeIdTF.getText());
-					if(controllerRef.login(employeeId)) {
-						//cleanup
-					}
-					else {
-						//don't login
+					if(!controllerRef.login(employeeId)) {
+						JOptionPane.showMessageDialog(VLogin.this, "Please enter a valid employee ID","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 					}
 				}
 				catch (Exception err) {
 					System.out.println(err.getMessage());
-					//don't login
+					JOptionPane.showMessageDialog(VLogin.this, "Please enter a valid employee ID","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		};
@@ -59,15 +60,13 @@ public class VLogin extends JFrame{
 		
 		newEmployeeButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//launch register employee page
+				controllerRef.register();
 			}
 		};
 		newEmployeeButton.addActionListener(newEmployeeButtonListener);
 	}
 	
 	public void initUI() {
-		setPreferredSize(new Dimension(700,500));
-		setLayout(new GridBagLayout());
 		
 		panel = new JPanel();
 		panel.setPreferredSize(new Dimension(350,250));
@@ -115,12 +114,29 @@ public class VLogin extends JFrame{
 		newEmployeeButtonGBC.anchor = GridBagConstraints.CENTER;
 		panel.add(newEmployeeButton,newEmployeeButtonGBC);
 		
-		add(panel,panelGBC);
+		mainFrameRef.add(panel,panelGBC);
+	}
+	
+	public void cleanup() {
+		controllerRef = null;
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
-		setLocationRelativeTo(null);
-		setVisible(true);
+		loginButton.removeActionListener(loginButtonListener);
+		newEmployeeButton.removeActionListener(newEmployeeButtonListener);
+		loginButtonListener = null;
+		newEmployeeButtonListener = null;
 		
+		loginButton.setVisible(false);
+		newEmployeeButton.setVisible(false);
+		employeeIdTF.setVisible(false);
+		employeeIdLabel.setVisible(false);
+		panel.setVisible(false);
+		
+		loginButton = null;
+		newEmployeeButton = null;
+		employeeIdTF = null;
+		employeeIdLabel = null;
+		panel = null;
+		
+		mainFrameRef = null;
 	}
 }
