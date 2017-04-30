@@ -39,6 +39,6 @@ public class CLogin {
 	
 	public void register() {
 		viewRef.cleanup();
-		CRegister registerPage = new CRegister(this,mainFrameRef);
+		CRegister registerPage = new CRegister(mainFrameRef);
 	}
 }
