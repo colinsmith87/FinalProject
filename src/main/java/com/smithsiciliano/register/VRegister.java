@@ -6,16 +6,20 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.smithsiciliano.App;
+import com.smithsiciliano.login.VLogin;
 
 public class VRegister extends JPanel {
 	
@@ -276,7 +280,7 @@ public class VRegister extends JPanel {
 		dayCBGBC.gridx = 1;
 		dayCBGBC.gridy = 3;
 		dayCBGBC.insets = new Insets(5,0,0,5);
-		dayCBGBC.anchor = GridBagConstraints.WEST;
+		dayCBGBC.anchor = GridBagConstraints.EAST;
 		panel.add(dayCB,dayCBGBC);
 		
 		monthCB = new JComboBox<String>();
@@ -286,7 +290,7 @@ public class VRegister extends JPanel {
 		monthCBGBC.gridx = 1;
 		monthCBGBC.gridy = 3;
 		monthCBGBC.insets = new Insets(5,0,0,5);
-		monthCBGBC.anchor = GridBagConstraints.EAST;
+		monthCBGBC.anchor = GridBagConstraints.WEST;
 		panel.add(monthCB,monthCBGBC);
 		
 		yearCB = new JComboBox<String>();
@@ -333,7 +337,28 @@ public class VRegister extends JPanel {
 	public void initListeners() {
 		saveButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					int id = Integer.parseInt(idTF.getText());
+					String fName = fNameTF.getText();
+					String lName = lNameTF.getText();
+					String day = (dayCB.getSelectedItem().toString().length()<2) ? "0"+dayCB.getSelectedItem().toString() : dayCB.getSelectedItem().toString();
+					String month = (monthCB.getSelectedItem().toString().length()<2) ? "0"+monthCB.getSelectedItem().toString() : monthCB.getSelectedItem().toString();
+					String year = yearCB.getSelectedItem().toString();
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					Date dob = sdf.parse(day+"/"+month+"/"+year);
+					long phone = Long.parseLong(phoneTF.getText());
+					String street = streetTF.getText();
+					String city = cityTF.getText();
+					String state = stateCB.getSelectedItem().toString();
+					int zip = Integer.parseInt(zipTF.getText());
+					String location = locationCB.getSelectedItem().toString();
+					if(!controllerRef.save(id,fName,lName,dob,phone,street,city,state,zip,location)) {
+						JOptionPane.showMessageDialog(VRegister.this, "Please complete all fields correctly","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+					}
+				}
+				catch (Exception err) {
+					JOptionPane.showMessageDialog(VRegister.this, "Please complete all fields correctly","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		};
 		saveButton.addActionListener(saveButtonListener);

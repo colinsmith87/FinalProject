@@ -1,11 +1,13 @@
 package com.smithsiciliano.register;
 
+import java.util.Date;
 import java.util.List;
 
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.dao.StoresDAO;
 import com.smithsiciliano.login.CLogin;
+import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.models.Stores;
 
 public class CRegister {
@@ -41,5 +43,18 @@ public class CRegister {
 			storeLocations[i] = stores.get(i).getsLocation();
 		}
 		viewRef.setStoreLocations(storeLocations);
+	}
+	
+	public boolean save(int id, String fName, String lName, Date dob, long phone, String street, String city, 
+			String state, int zip, String location) {
+		Employee employee = new Employee(id,fName,lName,30000,phone,street,city,state,zip,dob,location);
+		if(employeeDAO.insert(employee)) {
+			viewRef.cleanup();
+			//launch main screen
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }
