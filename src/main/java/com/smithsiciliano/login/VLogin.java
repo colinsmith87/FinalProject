@@ -43,14 +43,18 @@ public class VLogin extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				int employeeId = -1;
 				try {
-					employeeId = Integer.parseInt(employeeIdTF.getText());
+					String input = employeeIdTF.getText();
+					if(input.length()!=4) {
+						throw new Exception("Employee ID needs to be 4 digits");
+					}
+					employeeId = Integer.parseInt(input);
 					if(!controllerRef.login(employeeId)) {
-						JOptionPane.showMessageDialog(VLogin.this, "Please enter a valid employee ID","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(VLogin.this, "Employee ID not found","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 					}
 				}
 				catch (Exception err) {
 					System.out.println(err.getMessage());
-					JOptionPane.showMessageDialog(VLogin.this, "Please enter a valid employee ID","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(VLogin.this, err.getMessage(),"Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		};

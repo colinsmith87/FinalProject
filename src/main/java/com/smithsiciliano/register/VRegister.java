@@ -338,7 +338,11 @@ public class VRegister extends JPanel {
 		saveButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int id = Integer.parseInt(idTF.getText());
+					String idString = idTF.getText();
+					if(idString.length()!=4) {
+						throw new Exception("ID must be 4 digits");
+					}
+					int id = Integer.parseInt(idString);
 					String fName = fNameTF.getText();
 					String lName = lNameTF.getText();
 					String day = (dayCB.getSelectedItem().toString().length()<2) ? "0"+dayCB.getSelectedItem().toString() : dayCB.getSelectedItem().toString();
@@ -346,18 +350,30 @@ public class VRegister extends JPanel {
 					String year = yearCB.getSelectedItem().toString();
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					Date dob = sdf.parse(day+"/"+month+"/"+year);
-					long phone = Long.parseLong(phoneTF.getText());
+					String phoneString = phoneTF.getText();
+					if(phoneString.length()!=10) {
+						throw new Exception("Phone must be 10 digits");
+					}
+					long phone = Long.parseLong(phoneString);
 					String street = streetTF.getText();
 					String city = cityTF.getText();
 					String state = stateCB.getSelectedItem().toString();
-					int zip = Integer.parseInt(zipTF.getText());
+					String zipString = zipTF.getText();
+					if(zipString.length()!=5) {
+						throw new Exception("Zip must be 5 digits");
+					}
+					int zip = Integer.parseInt(zipString);
 					String location = locationCB.getSelectedItem().toString();
+					if(fName.equals("") || lName.equals("") || street.equals("") || city.equals("")) {
+						throw new Exception("All fields must be completed");
+					}
 					if(!controllerRef.save(id,fName,lName,dob,phone,street,city,state,zip,location)) {
-						JOptionPane.showMessageDialog(VRegister.this, "Please complete all fields correctly","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(VRegister.this, "Employee ID taken","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 					}
 				}
 				catch (Exception err) {
-					JOptionPane.showMessageDialog(VRegister.this, "Please complete all fields correctly","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+					System.out.println(err.getMessage());
+					JOptionPane.showMessageDialog(VRegister.this, err.getMessage(),"Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		};
