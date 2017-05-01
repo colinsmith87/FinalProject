@@ -4,6 +4,8 @@
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Members.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Stores.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/VRegister.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/VEnterDependents.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/CEnterDependents.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Employee.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Dependent.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/InStockDAO.java
