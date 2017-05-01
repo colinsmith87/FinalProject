@@ -53,10 +53,10 @@ public class VRegister extends JPanel {
 	private JComboBox<String> yearCB = null;
 	private JComboBox<String> locationCB = null;
 	
-	private JButton saveButton = null;
+	private JButton nextButton = null;
 	private JButton backButton = null;
 	
-	private ActionListener saveButtonListener = null;
+	private ActionListener nextButtonListener = null;
 	private ActionListener backButtonListener = null;
 	private ActionListener yearCBListener = null;
 	private ActionListener monthCBListener = null;
@@ -311,15 +311,15 @@ public class VRegister extends JPanel {
 		dateOfBirthLGBC.anchor = GridBagConstraints.WEST;
 		panel.add(dateOfBirthL,dateOfBirthLGBC);
 		
-		saveButton = new JButton("Save");
-		saveButton.setPreferredSize(new Dimension(100,20));
+		nextButton = new JButton("Next");
+		nextButton.setPreferredSize(new Dimension(100,20));
 		GridBagConstraints saveButtonGBC = new GridBagConstraints();
 		saveButtonGBC.gridx = 0;
 		saveButtonGBC.gridy = 10;
 		saveButtonGBC.gridwidth = 2;
 		saveButtonGBC.insets = new Insets(25,0,0,45);
 		saveButtonGBC.anchor = GridBagConstraints.CENTER;
-		panel.add(saveButton,saveButtonGBC);
+		panel.add(nextButton,saveButtonGBC);
 		
 		backButton = new JButton("Back");
 		backButton.setPreferredSize(new Dimension(100,20));
@@ -335,7 +335,7 @@ public class VRegister extends JPanel {
 	}
 	
 	public void initListeners() {
-		saveButtonListener = new ActionListener() {
+		nextButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String idString = idTF.getText();
@@ -377,7 +377,7 @@ public class VRegister extends JPanel {
 				}
 			}
 		};
-		saveButton.addActionListener(saveButtonListener);
+		nextButton.addActionListener(nextButtonListener);
 		backButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controllerRef.launchLoginScreen();
@@ -437,11 +437,11 @@ public class VRegister extends JPanel {
 		
 		controllerRef = null;
 		
-		saveButton.removeActionListener(saveButtonListener);
+		nextButton.removeActionListener(nextButtonListener);
 		backButton.removeActionListener(backButtonListener);
 		yearCB.removeActionListener(yearCBListener);
 		monthCB.removeActionListener(monthCBListener);
-		saveButtonListener = null;
+		nextButtonListener = null;
 		backButtonListener = null;
 		yearCBListener = null;
 		monthCBListener = null;
@@ -477,7 +477,7 @@ public class VRegister extends JPanel {
 		monthCB.setVisible(false);
 		yearCB.setVisible(false);
 		dateOfBirthL.setVisible(false);	
-		saveButton.setVisible(false);
+		nextButton.setVisible(false);
 		backButton.setVisible(false);
 		panel.setVisible(false);
 		
@@ -503,7 +503,7 @@ public class VRegister extends JPanel {
 		monthCB = null;
 		yearCB = null;
 		dateOfBirthL = null;
-		saveButton = null;
+		nextButton = null;
 		backButton = null;
 		panel = null;
 		
