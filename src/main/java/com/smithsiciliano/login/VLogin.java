@@ -20,9 +20,7 @@ public class VLogin extends JPanel{
 	
 	private CLogin controllerRef = null;
 	private App mainFrameRef = null;
-	
-	private JPanel panel = null;
-	
+		
 	private JTextField employeeIdTF = null;
 	
 	private JLabel employeeIdLabel = null;
@@ -70,10 +68,9 @@ public class VLogin extends JPanel{
 	
 	public void initUI() {
 		
-		panel = new JPanel();
-		panel.setPreferredSize(new Dimension(350,250));
-		panel.setLayout(new GridBagLayout());
-		panel.setBorder(BorderFactory.createTitledBorder("Login"));
+		setPreferredSize(new Dimension(350,250));
+		setLayout(new GridBagLayout());
+		setBorder(BorderFactory.createTitledBorder("Login"));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -85,7 +82,7 @@ public class VLogin extends JPanel{
 		employeeIdLabelGBC.gridy = 0;
 		employeeIdLabelGBC.insets = new Insets(0,0,0,5);
 		employeeIdLabelGBC.anchor = GridBagConstraints.WEST;
-		panel.add(employeeIdLabel,employeeIdLabelGBC);
+		add(employeeIdLabel,employeeIdLabelGBC);
 		
 		employeeIdTF = new JTextField();
 		employeeIdTF.setPreferredSize(new Dimension(100,20));
@@ -94,7 +91,7 @@ public class VLogin extends JPanel{
 		employeeIdTFGBC.gridy = 0;
 		employeeIdTFGBC.insets = new Insets(0,0,0,0);
 		employeeIdTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(employeeIdTF,employeeIdTFGBC);
+		add(employeeIdTF,employeeIdTFGBC);
 		
 		loginButton = new JButton("Login");
 		loginButton.setPreferredSize(new Dimension(100,20));
@@ -104,7 +101,7 @@ public class VLogin extends JPanel{
 		loginButtonGBC.gridwidth = 2;
 		loginButtonGBC.insets = new Insets(5,0,0,0);
 		loginButtonGBC.anchor = GridBagConstraints.CENTER;
-		panel.add(loginButton,loginButtonGBC);
+		add(loginButton,loginButtonGBC);
 		
 		newEmployeeButton = new JButton("New Employee");
 		newEmployeeButton.setPreferredSize(new Dimension(150,20));
@@ -114,9 +111,10 @@ public class VLogin extends JPanel{
 		newEmployeeButtonGBC.gridwidth = 2;
 		newEmployeeButtonGBC.insets = new Insets(5,0,0,0);
 		newEmployeeButtonGBC.anchor = GridBagConstraints.CENTER;
-		panel.add(newEmployeeButton,newEmployeeButtonGBC);
+		add(newEmployeeButton,newEmployeeButtonGBC);
 		
-		mainFrameRef.add(panel,panelGBC);
+		mainFrameRef.add(this,panelGBC);
+		mainFrameRef.pack();
 	}
 	
 	public void cleanup() {
@@ -131,13 +129,12 @@ public class VLogin extends JPanel{
 		newEmployeeButton.setVisible(false);
 		employeeIdTF.setVisible(false);
 		employeeIdLabel.setVisible(false);
-		panel.setVisible(false);
+		this.setVisible(false);
 		
 		loginButton = null;
 		newEmployeeButton = null;
 		employeeIdTF = null;
 		employeeIdLabel = null;
-		panel = null;
 		
 		mainFrameRef = null;
 	}

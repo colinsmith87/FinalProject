@@ -17,6 +17,7 @@ public class MembersDAO {
 	    
 		Query query = session.createQuery("from Members");
 		List<Members> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
@@ -28,6 +29,7 @@ public class MembersDAO {
 		Query query = session.createQuery("from Members member where member.memberId=:member_MEMBERID");
 		query.setParameter("member_MEMBERID", memberId);
 		List<Members> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}

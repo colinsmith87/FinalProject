@@ -17,6 +17,7 @@ public class DependentDAO {
 	    
 		Query query = session.createQuery("from Dependent");
 		List<Dependent> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
@@ -28,16 +29,19 @@ public class DependentDAO {
 		Query query = session.createQuery("from Dependent dependent where dependent.empId=:dependent_EMPID");
 		query.setParameter("dependent_EMPID", empId);
 		List<Dependent> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
 	
-	public boolean insert(Dependent dependent) {
+	public boolean insert(Dependent[] dependents) {
 		boolean retVal = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			session.save(dependent);
+			for(Dependent dependent : dependents) {
+				session.save(dependent);
+			}
 
 			session.getTransaction().commit();
 		} catch (org.hibernate.exception.ConstraintViolationException e) {

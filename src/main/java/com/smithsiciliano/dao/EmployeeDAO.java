@@ -17,6 +17,7 @@ public class EmployeeDAO {
 	    
 		Query query = session.createQuery("from Employee");
 		List<Employee> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
@@ -28,6 +29,7 @@ public class EmployeeDAO {
 		Query query = session.createQuery("from Employee employee where employee.employeeId=:employee_EMPLOYEEID");
 		query.setParameter("employee_EMPLOYEEID", employeeId);
 		List<Employee> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}

@@ -25,9 +25,7 @@ public class VRegister extends JPanel {
 	
 	private CRegister controllerRef = null;
 	private App mainFrameRef = null;
-	
-	private JPanel panel = null;
-	
+		
 	private JTextField idTF = null;
 	private JTextField fNameTF = null;
 	private JTextField lNameTF = null;
@@ -35,6 +33,7 @@ public class VRegister extends JPanel {
 	private JTextField streetTF = null;
 	private JTextField cityTF = null;
 	private JTextField zipTF = null;
+	private JTextField salaryTF = null;
 	
 	private JLabel idL= null;
 	private JLabel fNameL = null;
@@ -43,6 +42,7 @@ public class VRegister extends JPanel {
 	private JLabel streetL = null;
 	private JLabel cityL = null;
 	private JLabel zipL = null;
+	private JLabel salaryL = null;
 	private JLabel locationL = null;
 	private JLabel stateL = null;
 	private JLabel dateOfBirthL = null;
@@ -107,10 +107,9 @@ public class VRegister extends JPanel {
 			dayList28[i-1] = i+"";
 		}
 		
-		panel = new JPanel();
-		panel.setPreferredSize(new Dimension(350,350));
-		panel.setLayout(new GridBagLayout());
-		panel.setBorder(BorderFactory.createTitledBorder("Register"));
+		setPreferredSize(new Dimension(350,350));
+		setLayout(new GridBagLayout());
+		setBorder(BorderFactory.createTitledBorder("Register"));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -123,7 +122,7 @@ public class VRegister extends JPanel {
 		idTFGBC.gridy = 0;
 		idTFGBC.insets = new Insets(5,0,0,0);
 		idTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(idTF,idTFGBC);
+		add(idTF,idTFGBC);
 		
 		idL = new JLabel("Employee ID:");
 		GridBagConstraints idLGBC = new GridBagConstraints();
@@ -131,7 +130,7 @@ public class VRegister extends JPanel {
 		idLGBC.gridy = 0;
 		idLGBC.insets = new Insets(5,0,0,5);
 		idLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(idL,idLGBC);
+		add(idL,idLGBC);
 		
 		fNameTF = new JTextField();	
 		fNameTF.setPreferredSize(new Dimension(100,20));
@@ -140,7 +139,7 @@ public class VRegister extends JPanel {
 		fNameTFGBC.gridy = 1;
 		fNameTFGBC.insets = new Insets(5,0,0,0);
 		fNameTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(fNameTF,fNameTFGBC);
+		add(fNameTF,fNameTFGBC);
 		
 		fNameL = new JLabel("First Name:");
 		GridBagConstraints fNameLGBC = new GridBagConstraints();
@@ -148,7 +147,7 @@ public class VRegister extends JPanel {
 		fNameLGBC.gridy = 1;
 		fNameLGBC.insets = new Insets(5,0,0,5);
 		fNameLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(fNameL,fNameLGBC);
+		add(fNameL,fNameLGBC);
 		
 		lNameTF = new JTextField();
 		lNameTF.setPreferredSize(new Dimension(100,20));
@@ -157,7 +156,7 @@ public class VRegister extends JPanel {
 		lNameTFGBC.gridy = 2;
 		lNameTFGBC.insets = new Insets(5,0,0,0);
 		lNameTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(lNameTF,lNameTFGBC);
+		add(lNameTF,lNameTFGBC);
 		
 		lNameL = new JLabel("Last Name:");
 		GridBagConstraints lNameLGBC = new GridBagConstraints();
@@ -165,7 +164,7 @@ public class VRegister extends JPanel {
 		lNameLGBC.gridy = 2;
 		lNameLGBC.insets = new Insets(5,0,0,5);
 		lNameLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(lNameL,lNameLGBC);
+		add(lNameL,lNameLGBC);
 		
 		phoneTF = new JTextField();
 		phoneTF.setPreferredSize(new Dimension(100,20));
@@ -174,7 +173,7 @@ public class VRegister extends JPanel {
 		phoneTFGBC.gridy = 4;
 		phoneTFGBC.insets = new Insets(5,0,0,0);
 		phoneTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(phoneTF,phoneTFGBC);
+		add(phoneTF,phoneTFGBC);
 		
 		phoneL = new JLabel("Phone Number:");
 		GridBagConstraints phoneLGBC = new GridBagConstraints();
@@ -182,7 +181,7 @@ public class VRegister extends JPanel {
 		phoneLGBC.gridy = 4;
 		phoneLGBC.insets = new Insets(5,0,0,5);
 		phoneLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(phoneL,phoneLGBC);
+		add(phoneL,phoneLGBC);
 		
 		streetTF = new JTextField();
 		streetTF.setPreferredSize(new Dimension(100,20));
@@ -191,7 +190,7 @@ public class VRegister extends JPanel {
 		streetTFGBC.gridy = 5;
 		streetTFGBC.insets = new Insets(5,0,0,0);
 		streetTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(streetTF,streetTFGBC);
+		add(streetTF,streetTFGBC);
 		
 		streetL = new JLabel("Street:");
 		GridBagConstraints streetLGBC = new GridBagConstraints();
@@ -199,7 +198,7 @@ public class VRegister extends JPanel {
 		streetLGBC.gridy = 5;
 		streetLGBC.insets = new Insets(5,0,0,5);
 		streetLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(streetL,streetLGBC);
+		add(streetL,streetLGBC);
 		
 		cityTF = new JTextField();
 		cityTF.setPreferredSize(new Dimension(100,20));
@@ -208,7 +207,7 @@ public class VRegister extends JPanel {
 		cityTFGBC.gridy = 6;
 		cityTFGBC.insets = new Insets(5,0,0,0);
 		cityTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(cityTF,cityTFGBC);
+		add(cityTF,cityTFGBC);
 		
 		cityL = new JLabel("City:");
 		GridBagConstraints cityLGBC = new GridBagConstraints();
@@ -216,7 +215,7 @@ public class VRegister extends JPanel {
 		cityLGBC.gridy = 6;
 		cityLGBC.insets = new Insets(5,0,0,5);
 		cityLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(cityL,cityLGBC);
+		add(cityL,cityLGBC);
 		
 		zipTF = new JTextField();
 		zipTF.setPreferredSize(new Dimension(100,20));
@@ -225,7 +224,7 @@ public class VRegister extends JPanel {
 		zipTFGBC.gridy = 8;
 		zipTFGBC.insets = new Insets(5,0,0,0);
 		zipTFGBC.anchor = GridBagConstraints.WEST;
-		panel.add(zipTF,zipTFGBC);
+		add(zipTF,zipTFGBC);
 		
 		zipL = new JLabel("Zipcode:");
 		GridBagConstraints zipLGBC = new GridBagConstraints();
@@ -233,7 +232,24 @@ public class VRegister extends JPanel {
 		zipLGBC.gridy = 8;
 		zipLGBC.insets = new Insets(5,0,0,5);
 		zipLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(zipL,zipLGBC);
+		add(zipL,zipLGBC);
+		
+		salaryTF = new JTextField();
+		salaryTF.setPreferredSize(new Dimension(100,20));
+		GridBagConstraints salaryTFGBC = new GridBagConstraints();
+		salaryTFGBC.gridx = 1;
+		salaryTFGBC.gridy = 9;
+		salaryTFGBC.insets = new Insets(5,0,0,0);
+		salaryTFGBC.anchor = GridBagConstraints.WEST;
+		add(salaryTF,salaryTFGBC);
+		
+		salaryL = new JLabel("Salary:");
+		GridBagConstraints salaryLGBC = new GridBagConstraints();
+		salaryLGBC.gridx = 0;
+		salaryLGBC.gridy = 9;
+		salaryLGBC.insets = new Insets(5,0,0,5);
+		salaryLGBC.anchor = GridBagConstraints.WEST;
+		add(salaryL,salaryLGBC);
 		
 		locationCB = new JComboBox<String>();
 		locationCB.setPreferredSize(new Dimension(100,20));
@@ -241,18 +257,18 @@ public class VRegister extends JPanel {
 		locationCB.setSelectedIndex(0);
 		GridBagConstraints locationCBGBC = new GridBagConstraints();
 		locationCBGBC.gridx = 1;
-		locationCBGBC.gridy = 9;
+		locationCBGBC.gridy = 10;
 		locationCBGBC.insets = new Insets(5,0,0,0);
 		locationCBGBC.anchor = GridBagConstraints.WEST;
-		panel.add(locationCB,locationCBGBC);
+		add(locationCB,locationCBGBC);
 		
 		locationL = new JLabel("Store Location:");
 		GridBagConstraints locationLGBC = new GridBagConstraints();
 		locationLGBC.gridx = 0;
-		locationLGBC.gridy = 9;
+		locationLGBC.gridy = 10;
 		locationLGBC.insets = new Insets(5,0,0,5);
 		locationLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(locationL,locationLGBC);
+		add(locationL,locationLGBC);
 		
 		stateCB = new JComboBox<String>();
 		stateCB.setPreferredSize(new Dimension(100,20));
@@ -263,7 +279,7 @@ public class VRegister extends JPanel {
 		stateCBGBC.gridy = 7;
 		stateCBGBC.insets = new Insets(5,0,0,0);
 		stateCBGBC.anchor = GridBagConstraints.WEST;
-		panel.add(stateCB,stateCBGBC);
+		add(stateCB,stateCBGBC);
 		
 		stateL = new JLabel("State:");
 		GridBagConstraints stateLGBC = new GridBagConstraints();
@@ -271,7 +287,7 @@ public class VRegister extends JPanel {
 		stateLGBC.gridy = 7;
 		stateLGBC.insets = new Insets(5,0,0,5);
 		stateLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(stateL,stateLGBC);
+		add(stateL,stateLGBC);
 		
 		dayCB = new JComboBox<String>();
 		dayCB.setModel(new DefaultComboBoxModel<String>(dayList31));
@@ -281,7 +297,7 @@ public class VRegister extends JPanel {
 		dayCBGBC.gridy = 3;
 		dayCBGBC.insets = new Insets(5,0,0,5);
 		dayCBGBC.anchor = GridBagConstraints.EAST;
-		panel.add(dayCB,dayCBGBC);
+		add(dayCB,dayCBGBC);
 		
 		monthCB = new JComboBox<String>();
 		monthCB.setModel(new DefaultComboBoxModel<String>(monthList));
@@ -291,7 +307,7 @@ public class VRegister extends JPanel {
 		monthCBGBC.gridy = 3;
 		monthCBGBC.insets = new Insets(5,0,0,5);
 		monthCBGBC.anchor = GridBagConstraints.WEST;
-		panel.add(monthCB,monthCBGBC);
+		add(monthCB,monthCBGBC);
 		
 		yearCB = new JComboBox<String>();
 		yearCB.setModel(new DefaultComboBoxModel<String>(yearList));
@@ -301,7 +317,7 @@ public class VRegister extends JPanel {
 		yearCBGBC.gridy = 3;
 		yearCBGBC.insets = new Insets(5,0,0,0);
 		yearCBGBC.anchor = GridBagConstraints.WEST;
-		panel.add(yearCB,yearCBGBC);
+		add(yearCB,yearCBGBC);
 		
 		dateOfBirthL = new JLabel("Date of Birth:");
 		GridBagConstraints dateOfBirthLGBC = new GridBagConstraints();
@@ -309,34 +325,36 @@ public class VRegister extends JPanel {
 		dateOfBirthLGBC.gridy = 3;
 		dateOfBirthLGBC.insets = new Insets(5,0,0,5);
 		dateOfBirthLGBC.anchor = GridBagConstraints.WEST;
-		panel.add(dateOfBirthL,dateOfBirthLGBC);
+		add(dateOfBirthL,dateOfBirthLGBC);
 		
 		nextButton = new JButton("Next");
 		nextButton.setPreferredSize(new Dimension(100,20));
 		GridBagConstraints saveButtonGBC = new GridBagConstraints();
 		saveButtonGBC.gridx = 0;
-		saveButtonGBC.gridy = 10;
+		saveButtonGBC.gridy = 11;
 		saveButtonGBC.gridwidth = 2;
 		saveButtonGBC.insets = new Insets(25,0,0,45);
 		saveButtonGBC.anchor = GridBagConstraints.CENTER;
-		panel.add(nextButton,saveButtonGBC);
+		add(nextButton,saveButtonGBC);
 		
 		backButton = new JButton("Back");
 		backButton.setPreferredSize(new Dimension(100,20));
 		GridBagConstraints backButtonGBC = new GridBagConstraints();
 		backButtonGBC.gridx = 1;
-		backButtonGBC.gridy = 10;
+		backButtonGBC.gridy = 11;
 		backButtonGBC.gridwidth = 2;
 		backButtonGBC.insets = new Insets(25,0,0,30);
 		backButtonGBC.anchor = GridBagConstraints.EAST;
-		panel.add(backButton,backButtonGBC);
+		add(backButton,backButtonGBC);
 		
-		mainFrameRef.add(panel,panelGBC);
+		mainFrameRef.add(this,panelGBC);
+		mainFrameRef.pack();
 	}
 	
 	public void initListeners() {
 		nextButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				try {
 					String idString = idTF.getText();
 					if(idString.length()!=4) {
@@ -363,11 +381,12 @@ public class VRegister extends JPanel {
 						throw new Exception("Zip must be 5 digits");
 					}
 					int zip = Integer.parseInt(zipString);
+					int salary = Integer.parseInt(salaryTF.getText());
 					String location = locationCB.getSelectedItem().toString();
 					if(fName.equals("") || lName.equals("") || street.equals("") || city.equals("")) {
 						throw new Exception("All fields must be completed");
 					}
-					if(!controllerRef.save(id,fName,lName,dob,phone,street,city,state,zip,location)) {
+					if(!controllerRef.save(id,fName,lName,dob,phone,street,city,state,zip,salary,location)) {
 						JOptionPane.showMessageDialog(VRegister.this, "Employee ID taken","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 					}
 				}
@@ -469,6 +488,8 @@ public class VRegister extends JPanel {
 		cityL.setVisible(false);
 		zipTF.setVisible(false);
 		zipL.setVisible(false);
+		salaryTF.setVisible(false);
+		salaryL.setVisible(false);
 		locationCB.setVisible(false);
 		locationL.setVisible(false);
 		stateCB.setVisible(false);
@@ -479,7 +500,7 @@ public class VRegister extends JPanel {
 		dateOfBirthL.setVisible(false);	
 		nextButton.setVisible(false);
 		backButton.setVisible(false);
-		panel.setVisible(false);
+		this.setVisible(false);
 		
 		idTF = null;
 		idL = null;
@@ -495,6 +516,8 @@ public class VRegister extends JPanel {
 		cityL = null;
 		zipTF = null;
 		zipL = null;
+		salaryTF = null;
+		salaryL = null;
 		locationCB = null;
 		locationL = null;
 		stateCB = null;
@@ -505,7 +528,6 @@ public class VRegister extends JPanel {
 		dateOfBirthL = null;
 		nextButton = null;
 		backButton = null;
-		panel = null;
 		
 		mainFrameRef = null;
 	}

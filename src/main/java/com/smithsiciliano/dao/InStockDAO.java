@@ -17,6 +17,7 @@ public class InStockDAO {
 	    
 		Query query = session.createQuery("from InStock");
 		List<InStock> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
@@ -31,6 +32,7 @@ public class InStockDAO {
 		query.setParameter("stock_FOODNAME", foodName);
 		query.setParameter("stack_STORELOC", storeLoc);
 		List<InStock> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}

@@ -17,6 +17,7 @@ public class FoodDAO {
 	    
 		Query query = session.createQuery("from Food");
 		List<Food> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
@@ -28,6 +29,7 @@ public class FoodDAO {
 		Query query = session.createQuery("from Food food where food.itemName=:food_ITEMNAME");
 		query.setParameter("food_ITEMNAME", itemName);
 		List<Food> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}

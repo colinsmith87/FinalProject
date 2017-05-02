@@ -46,11 +46,12 @@ public class CRegister {
 	}
 	
 	public boolean save(int id, String fName, String lName, Date dob, long phone, String street, String city, 
-			String state, int zip, String location) {
-		Employee employee = new Employee(id,fName,lName,30000,phone,street,city,state,zip,dob,location);
+			String state, int zip, int salary, String location) {
+		Employee employee = new Employee(id,fName,lName,salary,phone,street,city,state,zip,dob,location);
 		if(employeeDAO.insert(employee)) {
 			viewRef.cleanup();
 			CEnterDependents enterDependents = new CEnterDependents(mainFrameRef);
+			enterDependents.setEmployee(employee);
 			return true;
 		}
 		else {

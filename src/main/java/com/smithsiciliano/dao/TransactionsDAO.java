@@ -17,6 +17,7 @@ public class TransactionsDAO {
 	    
 		Query query = session.createQuery("from Transactions");
 		List<Transactions> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
@@ -28,6 +29,7 @@ public class TransactionsDAO {
 		Query query = session.createQuery("from Transactions transaction where transaction.storeLoc=:transaction_STORELOC");
 		query.setParameter("transaction_STORELOC", sLocation);
 		List<Transactions> list = query.list();
+		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
