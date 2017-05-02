@@ -12,5 +12,8 @@
         <property name="sellBy" type="date">
         	<column name="SELLBY" not-null="true"/>
         </property>
+        <property name="itemCategory" type="string">
+        	<column name="ITEMCATEGORY" length="255" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

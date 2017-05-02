@@ -8,15 +8,17 @@ public class Food implements java.io.Serializable {
 	private String itemName;
 	private double price;
 	private Date sellBy;
+	private String itemCategory;
 	
 	public Food() {
 		
 	}
 	
-	public Food(String itemName, double price, Date sellBy) {
+	public Food(String itemName, double price, Date sellBy, String itemCategory) {
 		this.itemName = itemName;
 		this.price = price;
 		this.sellBy = sellBy;
+		this.itemCategory = itemCategory;
 	}
 
 	public String getItemName() {
@@ -41,5 +43,13 @@ public class Food implements java.io.Serializable {
 
 	public void setSellBy(Date sellBy) {
 		this.sellBy = sellBy;
+	}
+	
+	public void setItemCategory(String itemCategory) {
+		this.itemCategory = itemCategory;
+	}
+	
+	public String getItemCategory() {
+		return itemCategory;
 	}
 }
