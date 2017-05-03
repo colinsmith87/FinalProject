@@ -1,5 +1,8 @@
 package com.smithsiciliano.checkout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.FoodDAO;
 
@@ -19,5 +22,14 @@ public class CCheckout {
 		viewRef = new VCheckout(this,mainFrameRef);
 		viewRef.initUI();
 		viewRef.initListeners();
+	}
+	
+	public ArrayList<String> getCategories() {
+		List<Object> categories = dao.selectAllCategories();
+		ArrayList<String> retVal = new ArrayList<String>();
+		for(Object obj : categories) {
+			retVal.add(obj.toString());
+		}
+		return retVal;
 	}
 }
