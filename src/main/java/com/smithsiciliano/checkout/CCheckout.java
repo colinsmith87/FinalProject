@@ -5,12 +5,15 @@ import java.util.List;
 
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.FoodDAO;
+import com.smithsiciliano.models.Transactions;
 
 public class CCheckout {
 	
 	private App mainFrameRef = null;
 	private VCheckout viewRef = null;
 	private FoodDAO dao = null;
+	
+	private ArrayList<Transactions> transactions = null;
 	
 	public CCheckout(App mainFrameRef) {
 		this.mainFrameRef = mainFrameRef;

@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import com.smithsiciliano.App;
 import com.smithsiciliano.login.VLogin;
@@ -109,7 +110,8 @@ public class VRegister extends JPanel {
 		
 		setPreferredSize(new Dimension(350,350));
 		setLayout(new GridBagLayout());
-		setBorder(BorderFactory.createTitledBorder("Register"));
+		Border border = BorderFactory.createEtchedBorder();
+		setBorder(BorderFactory.createTitledBorder(border,"Register"));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -354,7 +356,7 @@ public class VRegister extends JPanel {
 	public void initListeners() {
 		nextButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 				try {
 					String idString = idTF.getText();
 					if(idString.length()!=4) {
@@ -486,5 +488,7 @@ public class VRegister extends JPanel {
 		nextButton.setVisible(false);
 		backButton.setVisible(false);
 		this.setVisible(false);
+		
+		mainFrameRef.remove(this);
 	}
 }

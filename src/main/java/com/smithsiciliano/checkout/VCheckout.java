@@ -3,6 +3,7 @@ package com.smithsiciliano.checkout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
 
 import com.smithsiciliano.App;
 
@@ -64,20 +66,39 @@ public class VCheckout extends JPanel {
 		
 		categories = controllerRef.getCategories();
 				
-		setPreferredSize(new Dimension(450,400));
+		setPreferredSize(new Dimension(1000,500));
 		setLayout(new GridBagLayout());
-		setBorder(BorderFactory.createTitledBorder("Checkout"));
+		Border border = BorderFactory.createEtchedBorder();
+		setBorder(BorderFactory.createTitledBorder(border,"Checkout"));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
 		panelGBC.anchor = GridBagConstraints.CENTER;
 		
+		itemListTextArea = new JTextArea(3,25);
+		itemListTextArea.setEditable(false);
+		GridBagConstraints itemListTextAreaGBC = new GridBagConstraints();
+		itemListTextAreaGBC.gridx = 3;
+		itemListTextAreaGBC.gridy = 0;
+		itemListTextAreaGBC.gridheight = 4;
+		itemListTextAreaGBC.gridwidth = 2;
+		itemListTextAreaGBC.fill = GridBagConstraints.BOTH;
+		add(itemListTextArea,itemListTextAreaGBC);
+		
 		categoryButtons = new ArrayList<JButton>();
 		
 		for(int i = 0; i < categories.size(); i++) {
 			categoryButtons.add(new JButton(categories.get(i)));
+			categoryButtons.get(i).setPreferredSize(new Dimension(150,75));
 		}
 
+		for(int i = 0; i < categoryButtons.size(); i++) {
+			GridBagConstraints categoryButtonGBC = new GridBagConstraints();
+			categoryButtonGBC.gridx = i%3;
+			categoryButtonGBC.gridy = i/3;
+			categoryButtonGBC.fill = GridBagConstraints.BOTH;
+			add(categoryButtons.get(i),categoryButtonGBC);
+		}
 		
 		bottomPanel = new JPanel();
 		bottomPanel.setLayout(new GridBagLayout());
@@ -85,53 +106,62 @@ public class VCheckout extends JPanel {
 		GridBagConstraints bottomPanelGBC = new GridBagConstraints();
 		bottomPanelGBC.gridx = 0;
 		bottomPanelGBC.gridy = 1;
+		bottomPanelGBC.insets = new Insets(5,0,0,0);
 		
 		logoutButton = new JButton("Logout");
 		GridBagConstraints logoutButtonGBC = new GridBagConstraints();
 		logoutButtonGBC.gridx = 0;
 		logoutButtonGBC.gridy = 0;
+		logoutButtonGBC.insets = new Insets(5,5,5,5);
 		bottomPanel.add(logoutButton,logoutButtonGBC);
 		
 		editProfileButton = new JButton("Edit Profile");
 		GridBagConstraints editProfileButtonGBC = new GridBagConstraints();
 		editProfileButtonGBC.gridx = 1;
 		editProfileButtonGBC.gridy = 0;
+		editProfileButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(editProfileButton,editProfileButtonGBC);
 		
 		editTransactionButton = new JButton("Edit Transaction");
 		GridBagConstraints editTransactionButtonGBC = new GridBagConstraints();
 		editTransactionButtonGBC.gridx = 2;
 		editTransactionButtonGBC.gridy = 0;
+		editTransactionButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(editTransactionButton,editTransactionButtonGBC);
 		
 		cancelTransactionButton = new JButton("Cancel Transaction");
 		GridBagConstraints cancelTransactionButtonGBC = new GridBagConstraints();
 		cancelTransactionButtonGBC.gridx = 3;
 		cancelTransactionButtonGBC.gridy = 0;
+		cancelTransactionButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(cancelTransactionButton,cancelTransactionButtonGBC);
 		
 		addFoodItemButton = new JButton("Add Food Item");
 		GridBagConstraints addFoodItemButtonGBC = new GridBagConstraints();
 		addFoodItemButtonGBC.gridx = 5;
 		addFoodItemButtonGBC.gridy = 0;
+		addFoodItemButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(addFoodItemButton,addFoodItemButtonGBC);
 		
 		removeFoodItemButton = new JButton("Remove Food Item");
 		GridBagConstraints removeFoodItemButtonGBC = new GridBagConstraints();
 		removeFoodItemButtonGBC.gridx = 6;
 		removeFoodItemButtonGBC.gridy = 0;
+		removeFoodItemButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(removeFoodItemButton,removeFoodItemButtonGBC);
 		
 		viewAllTransactionsButton = new JButton("View All Transactions");
 		GridBagConstraints viewAllTransactionsButtonGBC = new GridBagConstraints();
 		viewAllTransactionsButtonGBC.gridx = 4;
 		viewAllTransactionsButtonGBC.gridy = 0;
+		viewAllTransactionsButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(viewAllTransactionsButton,viewAllTransactionsButtonGBC);
 		
 		finishButton = new JButton("Finish");
 		GridBagConstraints finishButtonGBC = new GridBagConstraints();
 		finishButtonGBC.gridx = 7;
 		finishButtonGBC.gridy = 0;
+		finishButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(finishButton,finishButtonGBC);
 		
 		mainFrameRef.add(this,panelGBC);

@@ -22,7 +22,7 @@ import com.smithsiciliano.models.Food;
 public class App extends JFrame {
 	public App() {
 		super("Grocery Store Management System");
-    	setPreferredSize(new Dimension(700,500));
+    	setPreferredSize(new Dimension(1200,700));
 		setLayout(new GridBagLayout());
 		
     	CLogin startApplication = new CLogin(this);
@@ -32,7 +32,7 @@ public class App extends JFrame {
 		setVisible(true);
 	}
     public static void main( String[] args ) {
-    	
+
     	App app = new App();
     	    	
 //		Stores s = new Stores("Ipswich");

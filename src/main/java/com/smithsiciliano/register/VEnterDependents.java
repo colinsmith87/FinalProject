@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import com.smithsiciliano.App;
 
@@ -57,7 +58,8 @@ public class VEnterDependents extends JPanel {
 		
 		setPreferredSize(new Dimension(460,200));
 		setLayout(new GridBagLayout());
-		setBorder(BorderFactory.createTitledBorder("Enter Dependents"));
+		Border border = BorderFactory.createEtchedBorder();
+		setBorder(BorderFactory.createTitledBorder(border,"Enter Dependents"));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -259,5 +261,7 @@ public class VEnterDependents extends JPanel {
 		titlePanel.setVisible(false);
 		buttonPanel.setVisible(false);
 		this.setVisible(false);
+		
+		mainFrameRef.remove(this);
 	}
 }

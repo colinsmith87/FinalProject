@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import com.smithsiciliano.App;
 
@@ -70,7 +71,8 @@ public class VLogin extends JPanel{
 		
 		setPreferredSize(new Dimension(350,250));
 		setLayout(new GridBagLayout());
-		setBorder(BorderFactory.createTitledBorder("Login"));
+		Border border = BorderFactory.createEtchedBorder();
+		setBorder(BorderFactory.createTitledBorder(border,"Login"));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -127,5 +129,7 @@ public class VLogin extends JPanel{
 		employeeIdTF.setVisible(false);
 		employeeIdLabel.setVisible(false);
 		this.setVisible(false);
+		
+		mainFrameRef.remove(this);
 	}
 }
