@@ -3,6 +3,7 @@ package com.smithsiciliano.login;
 import java.util.List;
 
 import com.smithsiciliano.App;
+import com.smithsiciliano.checkout.CCheckout;
 import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.register.CRegister;
@@ -32,7 +33,7 @@ public class CLogin {
 		}
 		else {
 			viewRef.cleanup();
-			//launch new screen with this employee
+			CCheckout checkout = new CCheckout(mainFrameRef);
 			return true;
 		}
 	}

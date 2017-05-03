@@ -1,3 +1,4 @@
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/CCheckout.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Food.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/login/VLogin.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/MembersDAO.java
@@ -20,3 +21,4 @@
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/InStock.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/util/HibernateUtil.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/FoodDAO.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/VCheckout.java

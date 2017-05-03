@@ -2,7 +2,9 @@ package com.smithsiciliano.dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -22,24 +24,37 @@ public class FoodDAO {
 		return list;
 	}
 	
-	public List<Food> selectByItemName(String itemName) {
+	public List<Object> selectAllCategories() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("from Food food where food.itemName=:food_ITEMNAME");
-		query.setParameter("food_ITEMNAME", itemName);
+		Query query = session.createQuery("select distinct itemCategory from Food");
+		List<Object> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		return list;
+	}
+	
+	public List<Food> selectByCategory(String category) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Query query = session.createQuery("from Food food where food.itemCategory=:food_ITEMCATEGORY");
+		query.setParameter("food_ITEMCATEGORY", category);
 		List<Food> list = query.list();
 		session.getTransaction().commit();
 		session.close();
 		return list;
 	}
 	
-	public boolean insert(Food food) {
+	public boolean insert(Food[] foods) {
 		boolean retVal = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			session.save(food);
+			for(Food food : foods) {
+				session.save(food);
+			}
 
 			session.getTransaction().commit();
 		} catch (org.hibernate.exception.ConstraintViolationException e) {

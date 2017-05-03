@@ -3,6 +3,7 @@ package com.smithsiciliano.register;
 import java.util.ArrayList;
 
 import com.smithsiciliano.App;
+import com.smithsiciliano.checkout.CCheckout;
 import com.smithsiciliano.dao.DependentDAO;
 import com.smithsiciliano.models.Dependent;
 import com.smithsiciliano.models.Employee;
@@ -46,6 +47,6 @@ public class CEnterDependents {
 			dependentDAO.insert(dependentsToInsert);
 		}
 		viewRef.cleanup();
-		//launch next screen
+		CCheckout checkout = new CCheckout(mainFrameRef);
 	}
 }
