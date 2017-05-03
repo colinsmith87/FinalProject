@@ -453,26 +453,11 @@ public class VRegister extends JPanel {
 	}
 	
 	public void cleanup() {
-		
-		controllerRef = null;
-		
+				
 		nextButton.removeActionListener(nextButtonListener);
 		backButton.removeActionListener(backButtonListener);
 		yearCB.removeActionListener(yearCBListener);
 		monthCB.removeActionListener(monthCBListener);
-		nextButtonListener = null;
-		backButtonListener = null;
-		yearCBListener = null;
-		monthCBListener = null;
-		
-		stateList = null;
-		dayList28 = null;
-		dayList29 = null;
-		dayList30 = null;
-		dayList31 = null;
-		monthList = null;
-		yearList = null;
-		storeList = null;
 		
 		idTF.setVisible(false);
 		idL.setVisible(false);
@@ -501,34 +486,5 @@ public class VRegister extends JPanel {
 		nextButton.setVisible(false);
 		backButton.setVisible(false);
 		this.setVisible(false);
-		
-		idTF = null;
-		idL = null;
-		fNameTF = null;
-		fNameL = null;
-		lNameTF = null;
-		lNameL = null;
-		phoneTF = null;
-		phoneL = null;
-		streetTF = null;
-		streetL = null;
-		cityTF = null;
-		cityL = null;
-		zipTF = null;
-		zipL = null;
-		salaryTF = null;
-		salaryL = null;
-		locationCB = null;
-		locationL = null;
-		stateCB = null;
-		stateL = null;
-		dayCB = null;
-		monthCB = null;
-		yearCB = null;
-		dateOfBirthL = null;
-		nextButton = null;
-		backButton = null;
-		
-		mainFrameRef = null;
 	}
 }

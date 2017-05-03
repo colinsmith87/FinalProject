@@ -237,13 +237,9 @@ public class VEnterDependents extends JPanel {
 	}
 	
 	public void cleanup() {
-		
-		controllerRef = null;
-		
+				
 		saveButton.removeActionListener(saveButtonListener);
 		newRowButton.removeActionListener(newRowButtonListener);
-		saveButtonListener = null;
-		newRowButtonListener = null;
 		
 		saveButton.setVisible(false);
 		newRowButton.setVisible(false);
@@ -263,30 +259,5 @@ public class VEnterDependents extends JPanel {
 		titlePanel.setVisible(false);
 		buttonPanel.setVisible(false);
 		this.setVisible(false);
-		
-		saveButton = null;
-		newRowButton = null;
-		for(int i = 0; i < rows.size(); i++) {
-			firstNames = null;
-			lastNames = null;
-			relations = null;
-			phones = null;
-			rows = null;
-		}
-		firstNameL = null;
-		lastNameL = null;
-		relationL = null;
-		phoneL = null;
-		rowsPanel = null;
-		rowsScrollPane = null;
-		titlePanel = null;
-		buttonPanel = null;
-		rows = null;
-		firstNames = null;
-		lastNames = null;
-		relations = null;
-		phones = null;
-		
-		mainFrameRef = null;
 	}
 }

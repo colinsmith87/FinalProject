@@ -118,24 +118,14 @@ public class VLogin extends JPanel{
 	}
 	
 	public void cleanup() {
-		controllerRef = null;
 		
 		loginButton.removeActionListener(loginButtonListener);
 		newEmployeeButton.removeActionListener(newEmployeeButtonListener);
-		loginButtonListener = null;
-		newEmployeeButtonListener = null;
 		
 		loginButton.setVisible(false);
 		newEmployeeButton.setVisible(false);
 		employeeIdTF.setVisible(false);
 		employeeIdLabel.setVisible(false);
 		this.setVisible(false);
-		
-		loginButton = null;
-		newEmployeeButton = null;
-		employeeIdTF = null;
-		employeeIdLabel = null;
-		
-		mainFrameRef = null;
 	}
 }
