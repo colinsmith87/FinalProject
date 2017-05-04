@@ -30,7 +30,7 @@ public class InStockDAO {
 				+ "where stock.foodName=:stock_FOODNAME "
 				+ "AND stock.storeLoc=:stock_STORELOC");
 		query.setParameter("stock_FOODNAME", foodName);
-		query.setParameter("stack_STORELOC", storeLoc);
+		query.setParameter("stock_STORELOC", storeLoc);
 		List<InStock> list = query.list();
 		session.getTransaction().commit();
 		session.close();

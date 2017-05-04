@@ -9,10 +9,12 @@ import javax.swing.JFrame;
 
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.FoodDAO;
+import com.smithsiciliano.dao.InStockDAO;
 import com.smithsiciliano.dao.TransactionsDAO;
 import com.smithsiciliano.login.CLogin;
 import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.models.Food;
+import com.smithsiciliano.models.InStock;
 import com.smithsiciliano.models.Transactions;
 import com.smithsiciliano.register.CRegister;
 
@@ -23,6 +25,7 @@ public class CCheckout {
 	private FoodDAO dao = null;
 	private Employee employee = null;
 	private TransactionsDAO transactionsDAO = null;
+	private InStockDAO inStockDAO = null;
 	private ArrayList<Food> itemList = null;
 	private double total = 0;
 	
@@ -36,6 +39,7 @@ public class CCheckout {
 	
 	private void init() {
 		dao = new FoodDAO();
+		inStockDAO = new InStockDAO();
 		transactionsDAO = new TransactionsDAO();
 		itemList = new ArrayList<Food>();
 		transactions = new ArrayList<Transactions>();
@@ -84,12 +88,24 @@ public class CCheckout {
 	
 	public String getFoodItemInfo(String itemName) {
 		List<Food> food = dao.selectByItemName(itemName);
-		itemList.add(food.get(0));
-		String price = food.get(0).getPrice()+"";
-		total = total+food.get(0).getPrice();
-		price = (price.substring(0, price.indexOf(".")).length()==2) ? price : "0"+price;
-		price = (price.length()==5) ? price : price+"0";
-		return food.get(0).getItemName()+"\t"+price;
+		List<InStock> stock = inStockDAO.selectByFoodNameAndStoreLocation(itemName, employee.getStoreLoc());
+		int count = 0;
+		for(Food item : itemList) {
+			if(item.getItemName().equals(itemName)) {
+				count++;
+			}
+		}
+		if(count < stock.get(0).getQuantity()) {
+			itemList.add(food.get(0));
+			String price = food.get(0).getPrice()+"";
+			total = total+food.get(0).getPrice();
+			price = (price.substring(0, price.indexOf(".")).length()==2) ? price : "0"+price;
+			price = (price.length()==5) ? price : price+"0";
+			return food.get(0).getItemName()+"\t"+price+"\n";
+		}
+		else {	
+			return "";
+		}
 	}
 	
 	public String getTotal() {
@@ -104,7 +120,7 @@ public class CCheckout {
 		}
 		Transactions[] transactionsArray = new Transactions[transactions.size()];
 		for(int i = 0; i < transactionsArray.length; i++) {
-			transactionsArray[i] = transactions.get(0);
+			transactionsArray[i] = transactions.get(i);
 		}
 		transactionsDAO.insert(transactionsArray);
 		transactions.clear();

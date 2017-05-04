@@ -316,7 +316,7 @@ public class VCheckout extends JPanel {
 		itemButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterItem();
-				itemListTextArea.setText(itemListTextArea.getText()+controllerRef.getFoodItemInfo(((JButton)e.getSource()).getText())+"\n");
+				itemListTextArea.setText(itemListTextArea.getText()+controllerRef.getFoodItemInfo(((JButton)e.getSource()).getText()));
 				totalL.setText("Total:     "+controllerRef.getTotal());
 				backToCategories(false);
 			}
@@ -375,6 +375,16 @@ public class VCheckout extends JPanel {
 				categoryButtonGBC.gridx = i%3;
 				categoryButtonGBC.gridy = i/3;
 				buttonPanel.add(categoryButtons.get(i),categoryButtonGBC);
+			}
+			
+			categoryButtonListener = new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					cleanupAfterCategory();
+					initItems(((JButton)e.getSource()).getText());
+				}
+			};
+			for(JButton button : categoryButtons) {
+				button.addActionListener(categoryButtonListener);
 			}
 		}
 		for(JButton button : categoryButtons) {
