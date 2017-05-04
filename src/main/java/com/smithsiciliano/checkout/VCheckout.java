@@ -71,12 +71,12 @@ public class VCheckout extends JPanel {
 		this.mainFrameRef = mainFrameRef;
 	}
 
-	public void initUI() {
+	public void initUI(String storeLoc) {
 
 		setPreferredSize(new Dimension(1000,500));
 		setLayout(new GridBagLayout());
 		Border border = BorderFactory.createEtchedBorder();
-		setBorder(BorderFactory.createTitledBorder(border,"Checkout"));
+		setBorder(BorderFactory.createTitledBorder(border,storeLoc));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -271,7 +271,7 @@ public class VCheckout extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				itemListTextArea.setText("");
 				totalL.setText("Total:");
-				//TODO
+				controllerRef.cancelTransaction();
 			}
 		};
 		cancelTransactionButton.addActionListener(cancelTransactionButtonListener);
@@ -304,7 +304,6 @@ public class VCheckout extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterCategory();
 				initItems(((JButton)e.getSource()).getText());
-				//TODO
 			}
 		};
 		for(JButton button : categoryButtons) {
@@ -319,7 +318,7 @@ public class VCheckout extends JPanel {
 				cleanupAfterItem();
 				itemListTextArea.setText(itemListTextArea.getText()+controllerRef.getFoodItemInfo(((JButton)e.getSource()).getText())+"\n");
 				totalL.setText("Total:     "+controllerRef.getTotal());
-				backToCategories();
+				backToCategories(false);
 			}
 		};
 		for(JButton button : itemButtons) {
@@ -350,16 +349,34 @@ public class VCheckout extends JPanel {
 		doneButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterDone();
-				controllerRef.createTransaction(itemListTextArea.getText());
+				controllerRef.createTransaction();
 				itemListTextArea.setText("");
 				totalL.setText("Total:");
-				backToCategories();
+				backToCategories(true);
 			}
 		};
 		doneButton.addActionListener(doneButtonListener);
 	}
 	
-	public void backToCategories() {
+	public void backToCategories(boolean done) {
+		
+		if(done) {
+			categories = controllerRef.getCategories();
+
+			categoryButtons = new ArrayList<JButton>();
+
+			for(int i = 0; i < categories.size(); i++) {
+				categoryButtons.add(new JButton(categories.get(i)));
+				categoryButtons.get(i).setPreferredSize(new Dimension(150,75));
+			}
+
+			for(int i = 0; i < categoryButtons.size(); i++) {
+				GridBagConstraints categoryButtonGBC = new GridBagConstraints();
+				categoryButtonGBC.gridx = i%3;
+				categoryButtonGBC.gridy = i/3;
+				buttonPanel.add(categoryButtons.get(i),categoryButtonGBC);
+			}
+		}
 		for(JButton button : categoryButtons) {
 			button.setVisible(true);
 		}

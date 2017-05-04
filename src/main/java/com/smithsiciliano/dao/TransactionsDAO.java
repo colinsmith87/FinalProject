@@ -34,12 +34,14 @@ public class TransactionsDAO {
 		return list;
 	}
 	
-	public boolean insert(Transactions transaction) {
+	public boolean insert(Transactions[] transactions) {
 		boolean retVal = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			session.save(transaction);
+			for(Transactions transaction : transactions) {
+				session.save(transaction);
+			}
 
 			session.getTransaction().commit();
 		} catch (org.hibernate.exception.ConstraintViolationException e) {

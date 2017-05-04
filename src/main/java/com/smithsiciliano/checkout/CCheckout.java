@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.FoodDAO;
+import com.smithsiciliano.dao.TransactionsDAO;
 import com.smithsiciliano.login.CLogin;
 import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.models.Food;
@@ -21,6 +22,7 @@ public class CCheckout {
 	private VCheckout viewRef = null;
 	private FoodDAO dao = null;
 	private Employee employee = null;
+	private TransactionsDAO transactionsDAO = null;
 	private ArrayList<Food> itemList = null;
 	private double total = 0;
 	
@@ -34,9 +36,11 @@ public class CCheckout {
 	
 	private void init() {
 		dao = new FoodDAO();
+		transactionsDAO = new TransactionsDAO();
 		itemList = new ArrayList<Food>();
+		transactions = new ArrayList<Transactions>();
 		viewRef = new VCheckout(this,mainFrameRef);
-		viewRef.initUI();
+		viewRef.initUI(employee.getStoreLoc());
 		viewRef.initListeners();
 	}
 	
@@ -94,7 +98,20 @@ public class CCheckout {
 		return totalString;
 	}
 	
-	public void createTransaction(String itemList) {
-		//TODO
+	public void createTransaction() {
+		for(Food food : itemList) {
+			transactions.add(new Transactions(food.getPrice(),food.getItemName(),employee.getStoreLoc()));
+		}
+		Transactions[] transactionsArray = new Transactions[transactions.size()];
+		for(int i = 0; i < transactionsArray.length; i++) {
+			transactionsArray[i] = transactions.get(0);
+		}
+		transactionsDAO.insert(transactionsArray);
+		transactions.clear();
+		itemList.clear();
+	}
+	
+	public void cancelTransaction() {
+		itemList.clear();
 	}
 }
