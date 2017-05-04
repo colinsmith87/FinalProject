@@ -240,13 +240,13 @@ public class VCheckout extends JPanel {
 		logoutButton.addActionListener(logoutButtonListener);
 		editProfileButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				//TODO
 			}
 		};
 		editProfileButton.addActionListener(editProfileButtonListener);
 		editTransactionButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				//TODO
 			}
 		};
 		editTransactionButton.addActionListener(editTransactionButtonListener);
@@ -258,19 +258,19 @@ public class VCheckout extends JPanel {
 		cancelTransactionButton.addActionListener(cancelTransactionButtonListener);
 		addFoodItemButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				//TODO
 			}
 		};
 		addFoodItemButton.addActionListener(addFoodItemButtonListener);
 		removeFoodItemButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				//TODO
 			}
 		};
 		removeFoodItemButton.addActionListener(removeFoodItemButtonListener);
 		viewAllTransactionsButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				//TODO
 			}
 		};
 		viewAllTransactionsButton.addActionListener(viewAllTransactionsButtonListener);
@@ -365,5 +365,45 @@ public class VCheckout extends JPanel {
 	
 	public void cleanup() {
 		
+		for(JButton button : categoryButtons) {
+			button.removeActionListener(categoryButtonListener);
+			button.setVisible(false);
+		}
+		for(JButton button : itemButtons) {
+			button.removeActionListener(itemButtonListener);
+			button.setVisible(false);
+		}
+		
+		creditDebitButton.removeActionListener(itemButtonListener);
+		cashButton.removeActionListener(cashButtonListener);
+		doneButton.removeActionListener(doneButtonListener);
+		logoutButton.removeActionListener(logoutButtonListener);
+		editProfileButton.removeActionListener(editProfileButtonListener);
+		editTransactionButton.removeActionListener(editTransactionButtonListener);
+		cancelTransactionButton.removeActionListener(cancelTransactionButtonListener);
+		addFoodItemButton.removeActionListener(addFoodItemButtonListener);
+		removeFoodItemButton.removeActionListener(removeFoodItemButtonListener);
+		viewAllTransactionsButton.removeActionListener(viewAllTransactionsButtonListener);
+		finishButton.removeActionListener(finishButtonListener);
+		
+		creditDebitButton.setVisible(false);
+		cashButton.setVisible(false);
+		doneButton.setVisible(false);
+		itemListTextArea.setVisible(false);
+		logoutButton.setVisible(false);
+		editProfileButton.setVisible(false);
+		editTransactionButton.setVisible(false);
+		cancelTransactionButton.setVisible(false);
+		addFoodItemButton.setVisible(false);
+		removeFoodItemButton.setVisible(false);
+		viewAllTransactionsButton.setVisible(false);
+		finishButton.setVisible(false);
+		
+		bottomPanel.setVisible(false);
+		textAreaPanel.setVisible(false);
+		buttonPanel.setVisible(false);
+		
+		mainFrameRef.remove(this);
+		mainFrameRef.remove(bottomPanel);
 	}
 }

@@ -53,10 +53,10 @@ public class CCheckout {
 	}
 	
 	public void getFoodItemInfo(String itemName) {
-		
+		//TODO
 	}
 	
 	public void createTransaction(String itemList) {
-		
+		//TODO
 	}
 }
