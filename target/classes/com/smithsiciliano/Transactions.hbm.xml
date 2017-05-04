@@ -3,16 +3,19 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="com.smithsiciliano.models.Transactions" table="TRANSACTIONS">
-		<composite-id>
-			<key-property name="storeLoc" type="string">
-				<column name="STORELOC" length="255" not-null="true" />
-			</key-property>
-			<key-property name="foodItem" type="string">
-				<column name="FOODITEM" length="255" not-null="true" />
-			</key-property>
-		</composite-id>
+		<id name="transactionId" type="int">
+			<column name="TRANSACTIONID"/>
+            <generator class="increment"/>
+		</id>
 		<property name="price" type="double">
 			<column name="PRICE" precision="4" scale="2" not-null="true" />
 		</property>
+		<property name="storeLoc" type="string">
+			<column name="STORELOC" length="255" not-null="true" />
+		</property>
+		<property name="foodItem" type="string">
+			<column name="FOODITEM" length="255" not-null="true" />
+		</property>
+
 	</class>
 </hibernate-mapping>

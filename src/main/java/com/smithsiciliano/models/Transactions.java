@@ -3,6 +3,7 @@ package com.smithsiciliano.models;
 @SuppressWarnings("serial")
 public class Transactions implements java.io.Serializable {
 	
+	private int transactionId;
 	private double price;
 	private String foodItem;
 	private String storeLoc;
@@ -39,5 +40,13 @@ public class Transactions implements java.io.Serializable {
 
 	public void setStoreLoc(String storeLoc) {
 		this.storeLoc = storeLoc;
+	}
+	
+	public int getTransactionId() {
+		return transactionId;
+	}
+	
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
 	}
 }
