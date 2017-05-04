@@ -12,7 +12,9 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
@@ -24,10 +26,13 @@ public class VCheckout extends JPanel {
 	private CCheckout controllerRef = null;
 
 	private JTextArea itemListTextArea = null;
+	private JScrollPane textAreaSP = null;
 
 	private JPanel bottomPanel = null;
 	private JPanel textAreaPanel = null;
 	private JPanel buttonPanel = null;
+	
+	private JLabel totalL = null;
 
 	private ArrayList<JButton> categoryButtons = null;
 	private ArrayList<JButton> itemButtons = null;
@@ -78,13 +83,24 @@ public class VCheckout extends JPanel {
 		panelGBC.anchor = GridBagConstraints.CENTER;
 		
 		textAreaPanel = new JPanel();
+		textAreaPanel.setLayout(new GridBagLayout());
 
 		itemListTextArea = new JTextArea(25,25);
 		itemListTextArea.setEditable(false);
 		GridBagConstraints itemListTextAreaGBC = new GridBagConstraints();
-		itemListTextAreaGBC.gridx = 1;
+		itemListTextAreaGBC.gridx = 0;
 		itemListTextAreaGBC.gridy = 0;
-		textAreaPanel.add(itemListTextArea,itemListTextAreaGBC);
+		textAreaSP = new JScrollPane(itemListTextArea);
+		textAreaPanel.add(textAreaSP,itemListTextAreaGBC);
+		itemListTextAreaGBC.gridx = 1;
+		
+		totalL = new JLabel("Total:\t");
+		GridBagConstraints totalLGBC = new GridBagConstraints();
+		totalLGBC.gridx = 0;
+		totalLGBC.gridy = 1;
+		totalLGBC.anchor = GridBagConstraints.WEST;
+		textAreaPanel.add(totalL,totalLGBC);
+		
 		add(textAreaPanel,itemListTextAreaGBC);
 		
 		buttonPanel = new JPanel();
@@ -254,6 +270,8 @@ public class VCheckout extends JPanel {
 		cancelTransactionButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				itemListTextArea.setText("");
+				totalL.setText("Total:");
+				//TODO
 			}
 		};
 		cancelTransactionButton.addActionListener(cancelTransactionButtonListener);
@@ -286,6 +304,7 @@ public class VCheckout extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterCategory();
 				initItems(((JButton)e.getSource()).getText());
+				//TODO
 			}
 		};
 		for(JButton button : categoryButtons) {
@@ -298,7 +317,8 @@ public class VCheckout extends JPanel {
 		itemButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterItem();
-				controllerRef.getFoodItemInfo(((JButton)e.getSource()).getText());
+				itemListTextArea.setText(itemListTextArea.getText()+controllerRef.getFoodItemInfo(((JButton)e.getSource()).getText())+"\n");
+				totalL.setText("Total:     "+controllerRef.getTotal());
 				backToCategories();
 			}
 		};
@@ -331,6 +351,8 @@ public class VCheckout extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterDone();
 				controllerRef.createTransaction(itemListTextArea.getText());
+				itemListTextArea.setText("");
+				totalL.setText("Total:");
 				backToCategories();
 			}
 		};

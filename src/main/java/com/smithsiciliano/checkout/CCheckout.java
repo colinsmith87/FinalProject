@@ -20,7 +20,9 @@ public class CCheckout {
 	private JFrame mainFrameRef = null;
 	private VCheckout viewRef = null;
 	private FoodDAO dao = null;
-	Employee employee = null;
+	private Employee employee = null;
+	private ArrayList<Food> itemList = null;
+	private double total = 0;
 	
 	private ArrayList<Transactions> transactions = null;
 	
@@ -32,6 +34,7 @@ public class CCheckout {
 	
 	private void init() {
 		dao = new FoodDAO();
+		itemList = new ArrayList<Food>();
 		viewRef = new VCheckout(this,mainFrameRef);
 		viewRef.initUI();
 		viewRef.initListeners();
@@ -75,8 +78,20 @@ public class CCheckout {
     	editProfile.fillInfo();
 	}
 	
-	public void getFoodItemInfo(String itemName) {
-		//TODO
+	public String getFoodItemInfo(String itemName) {
+		List<Food> food = dao.selectByItemName(itemName);
+		itemList.add(food.get(0));
+		String price = food.get(0).getPrice()+"";
+		total = total+food.get(0).getPrice();
+		price = (price.substring(0, price.indexOf(".")).length()==2) ? price : "0"+price;
+		price = (price.length()==5) ? price : price+"0";
+		return food.get(0).getItemName()+"\t"+price;
+	}
+	
+	public String getTotal() {
+		String totalString = total+"";
+		totalString = (totalString.substring(totalString.indexOf(".")+1).length()==2) ? totalString : totalString+"0";
+		return totalString;
 	}
 	
 	public void createTransaction(String itemList) {
