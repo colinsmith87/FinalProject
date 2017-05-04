@@ -7,12 +7,14 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,7 +27,7 @@ import com.smithsiciliano.login.VLogin;
 public class VRegister extends JPanel {
 	
 	private CRegister controllerRef = null;
-	private App mainFrameRef = null;
+	private JFrame mainFrameRef = null;
 		
 	private JTextField idTF = null;
 	private JTextField fNameTF = null;
@@ -76,13 +78,44 @@ public class VRegister extends JPanel {
 	private String[] yearList = null;
 	private String[] storeList = null;
 	
-	public VRegister(CRegister controllerRef, App mainFrameRef) {
+	public VRegister(CRegister controllerRef, JFrame mainFrameRef) {
 		this.controllerRef = controllerRef;
 		this.mainFrameRef = mainFrameRef;
 	}
 	
 	public void setStoreLocations(String[] storeLocations) {
 		storeList = storeLocations;
+	}
+	
+	public void fillInfo(int id, String fName, String lName, String street, String city,
+			String state, int zip, long phone, Date dob, int salary, String storeLoc) {
+		String idString = id+"";
+		while(idString.length()<4) {
+			idString = "0"+idString;
+		}
+		idTF.setText(idString);
+		fNameTF.setText(fName);
+		lNameTF.setText(lName);
+		streetTF.setText(street);
+		cityTF.setText(city);
+		stateCB.setSelectedItem(state);
+		String zipString = zip+"";
+		while(zipString.length()<5) {
+			zipString = "0"+zipString;
+		}
+		zipTF.setText(zipString);
+		String phoneString = phone+"";
+		while(phoneString.length()<10) {
+			phoneString = "0"+phoneString;
+		}
+		phoneTF.setText(phoneString);
+		salaryTF.setText(salary+"");
+		locationCB.setSelectedItem(storeLoc);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(dob);
+		yearCB.setSelectedItem(calendar.get(Calendar.YEAR)+"");
+		monthCB.setSelectedItem((calendar.get(Calendar.MONTH)+1)+"");
+		dayCB.setSelectedItem(calendar.get(Calendar.DAY_OF_MONTH)+"");
 	}
 	
 	public void initUI() {
@@ -452,6 +485,10 @@ public class VRegister extends JPanel {
 			}
 		};
 		monthCB.addActionListener(monthCBListener);
+	}
+	
+	public void setBackButtonVisible(boolean value) {
+		backButton.setVisible(false);
 	}
 	
 	public void cleanup() {

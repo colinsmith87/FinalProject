@@ -2,6 +2,8 @@ package com.smithsiciliano.login;
 
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import com.smithsiciliano.App;
 import com.smithsiciliano.checkout.CCheckout;
 import com.smithsiciliano.dao.EmployeeDAO;
@@ -12,9 +14,9 @@ public class CLogin {
 	
 	private VLogin viewRef = null;
 	private EmployeeDAO dao = null;
-	private App mainFrameRef = null;
+	private JFrame mainFrameRef = null;
 	
-	public CLogin(App mainFrameRef) {
+	public CLogin(JFrame mainFrameRef) {
 		this.mainFrameRef = mainFrameRef;
 		init();
 	}
@@ -33,13 +35,13 @@ public class CLogin {
 		}
 		else {
 			viewRef.cleanup();
-			CCheckout checkout = new CCheckout(mainFrameRef);
+			CCheckout checkout = new CCheckout(mainFrameRef,employee.get(0));
 			return true;
 		}
 	}
 	
 	public void register() {
 		viewRef.cleanup();
-		CRegister registerPage = new CRegister(mainFrameRef);
+		CRegister registerPage = new CRegister(mainFrameRef,null);
 	}
 }

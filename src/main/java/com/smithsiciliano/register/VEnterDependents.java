@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -23,7 +24,7 @@ import com.smithsiciliano.App;
 public class VEnterDependents extends JPanel {
 	
 	CEnterDependents controllerRef = null;
-	App mainFrameRef = null;
+	JFrame mainFrameRef = null;
 	
 	JPanel titlePanel = null;
 	JPanel rowsPanel = null;
@@ -49,9 +50,19 @@ public class VEnterDependents extends JPanel {
 	ActionListener saveButtonListener = null;
 	ActionListener newRowButtonListener = null;
 	
-	public VEnterDependents(CEnterDependents controllerRef, App mainFrameRef) {
+	public VEnterDependents(CEnterDependents controllerRef, JFrame mainFrameRef) {
 		this.controllerRef = controllerRef;
 		this.mainFrameRef = mainFrameRef;
+	}
+	
+	public void fillInfo(ArrayList<String> fNames, ArrayList<String> lNames, ArrayList<String> relations, ArrayList<String> phones) {
+		for(int i = 0; i < fNames.size(); i++) {
+			firstNames.get(i).setText(fNames.get(i));
+			lastNames.get(i).setText(lNames.get(i));
+			this.relations.get(i).setText(relations.get(i));
+			this.phones.get(i).setText(phones.get(i));
+			addRow();
+		}
 	}
 	
 	public void initUI() {

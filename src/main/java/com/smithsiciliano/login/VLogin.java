@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,7 +21,7 @@ import com.smithsiciliano.App;
 public class VLogin extends JPanel{
 	
 	private CLogin controllerRef = null;
-	private App mainFrameRef = null;
+	private JFrame mainFrameRef = null;
 		
 	private JTextField employeeIdTF = null;
 	
@@ -32,7 +33,7 @@ public class VLogin extends JPanel{
 	private ActionListener loginButtonListener = null;
 	private ActionListener newEmployeeButtonListener = null;
 	
-	public VLogin(CLogin controllerRef, App mainFrameRef) {
+	public VLogin(CLogin controllerRef, JFrame mainFrameRef) {
 		this.controllerRef = controllerRef;
 		this.mainFrameRef = mainFrameRef;
 	}

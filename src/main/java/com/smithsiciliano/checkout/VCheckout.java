@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
@@ -19,7 +20,7 @@ import com.smithsiciliano.App;
 
 public class VCheckout extends JPanel {
 
-	private App mainFrameRef = null;
+	private JFrame mainFrameRef = null;
 	private CCheckout controllerRef = null;
 
 	private JTextArea itemListTextArea = null;
@@ -60,7 +61,7 @@ public class VCheckout extends JPanel {
 	private ActionListener cashButtonListener = null;
 	private ActionListener doneButtonListener = null;
 
-	public VCheckout(CCheckout controllerRef, App mainFrameRef) {
+	public VCheckout(CCheckout controllerRef, JFrame mainFrameRef) {
 		this.controllerRef = controllerRef;
 		this.mainFrameRef = mainFrameRef;
 	}
@@ -240,7 +241,7 @@ public class VCheckout extends JPanel {
 		logoutButton.addActionListener(logoutButtonListener);
 		editProfileButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				controllerRef.editProfile();
 			}
 		};
 		editProfileButton.addActionListener(editProfileButtonListener);
@@ -369,14 +370,25 @@ public class VCheckout extends JPanel {
 			button.removeActionListener(categoryButtonListener);
 			button.setVisible(false);
 		}
-		for(JButton button : itemButtons) {
-			button.removeActionListener(itemButtonListener);
-			button.setVisible(false);
+		if(itemButtons!=null) {
+			for(JButton button : itemButtons) {
+				button.removeActionListener(itemButtonListener);
+				button.setVisible(false);
+			}
 		}
-		
-		creditDebitButton.removeActionListener(itemButtonListener);
-		cashButton.removeActionListener(cashButtonListener);
-		doneButton.removeActionListener(doneButtonListener);
+
+		if (creditDebitButton!=null) {
+			creditDebitButton.removeActionListener(itemButtonListener);
+			creditDebitButton.setVisible(false);
+		}
+		if (cashButton!=null) {
+			cashButton.removeActionListener(cashButtonListener);
+			cashButton.setVisible(false);
+		}
+		if (doneButton!=null) {
+			doneButton.removeActionListener(doneButtonListener);
+			doneButton.setVisible(false);
+		}
 		logoutButton.removeActionListener(logoutButtonListener);
 		editProfileButton.removeActionListener(editProfileButtonListener);
 		editTransactionButton.removeActionListener(editTransactionButtonListener);
@@ -386,9 +398,6 @@ public class VCheckout extends JPanel {
 		viewAllTransactionsButton.removeActionListener(viewAllTransactionsButtonListener);
 		finishButton.removeActionListener(finishButtonListener);
 		
-		creditDebitButton.setVisible(false);
-		cashButton.setVisible(false);
-		doneButton.setVisible(false);
 		itemListTextArea.setVisible(false);
 		logoutButton.setVisible(false);
 		editProfileButton.setVisible(false);
@@ -402,6 +411,8 @@ public class VCheckout extends JPanel {
 		bottomPanel.setVisible(false);
 		textAreaPanel.setVisible(false);
 		buttonPanel.setVisible(false);
+		
+		this.setVisible(false);
 		
 		mainFrameRef.remove(this);
 		mainFrameRef.remove(bottomPanel);

@@ -83,6 +83,26 @@ public class DependentDAO {
 		return retVal;
 	}
 	
+	public void updateAllByEmployeeId(Dependent[] dependents, int empId) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		Query query = session.createQuery("from Dependent dependent where dependent.empId=:dependent_EMPID");
+		query.setParameter("dependent_EMPID", empId);
+		List<Dependent> list = query.list();
+		
+		for(Dependent dependent : list) {
+			session.delete(dependent);
+		}
+		
+		for(Dependent dependent : dependents) {
+			session.save(dependent);
+		}
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+	
 	public void delete(Dependent dependent) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();

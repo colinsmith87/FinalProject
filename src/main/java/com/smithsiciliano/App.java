@@ -33,7 +33,7 @@ public class App extends JFrame {
 	}
     public static void main( String[] args ) {
 
-    	App app = new App();
+    	JFrame app = new App();
     	    	
 //		Stores s = new Stores("Ipswich");
 //		Employee em = new Employee(0000,"Colin","Smith",65000,9785005381L,"61 High Street","Ipswich",
