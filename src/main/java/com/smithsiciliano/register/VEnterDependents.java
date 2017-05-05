@@ -212,31 +212,36 @@ public class VEnterDependents extends JPanel {
 		rowsPanel.add(row, rowGBC);
 		mainFrameRef.pack();
 	}
-	
+
 	public void initListeners() {
 		saveButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean update = true;
-				for(int i = 0; i < rows.size(); i++) {
-					String fName = firstNames.get(i).getText();
-					String lName = lastNames.get(i).getText();
-					String relation = relations.get(i).getText();
-					String phone = phones.get(i).getText();
-					if(!fName.equals("")) {
-						if(!lName.equals("")
-							&& !relation.equals("")
-							&& !phone.equals("")
-							&& phone.length()==10) {
-							controllerRef.addDependent(fName, lName, relation, Long.parseLong(phone));
-						}
-						else {
-							JOptionPane.showMessageDialog(VEnterDependents.this, "All fields must be complete and phone must have 10 digits","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
-							update = false;
+				try {
+					boolean update = true;
+					for(int i = 0; i < rows.size(); i++) {
+						String fName = firstNames.get(i).getText();
+						String lName = lastNames.get(i).getText();
+						String relation = relations.get(i).getText();
+						String phone = phones.get(i).getText();
+						if(!fName.equals("")) {
+							if(!lName.equals("")
+									&& !relation.equals("")
+									&& !phone.equals("")
+									&& phone.length()==10) {
+								controllerRef.addDependent(fName, lName, relation, Long.parseLong(phone));
+							}
+							else {
+								JOptionPane.showMessageDialog(VEnterDependents.this, "All fields must be complete and phone must have 10 digits","Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
+								update = false;
+							}
 						}
 					}
+					if(update) {
+						controllerRef.save();
+					}
 				}
-				if(update) {
-					controllerRef.save();
+				catch (Exception err) {
+					JOptionPane.showMessageDialog(VEnterDependents.this,err.getMessage(),"Grocery Store Management System",JOptionPane.WARNING_MESSAGE);
 				}
 			}
 		};

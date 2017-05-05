@@ -78,5 +78,6 @@ public class CEnterDependents {
 			dependentDAO.updateAllByEmployeeId(dependentsToUpdate, employee.getEmployeeId());
 			mainFrameRef.dispose();
 		}
+		dependents.clear();
 	}
 }

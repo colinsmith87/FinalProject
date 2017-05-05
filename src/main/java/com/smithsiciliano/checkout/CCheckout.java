@@ -137,7 +137,16 @@ public class CCheckout {
 		itemList.clear();
 	}
 	
+	public void backToCategories() {
+		viewRef.backToCategories(true);
+	}
+	
+	public void cleanupAfterCategories() {
+		viewRef.cleanupAfterCategory();
+	}
+	
 	public void cancelTransaction() {
 		itemList.clear();
+		total = 0;
 	}
 }

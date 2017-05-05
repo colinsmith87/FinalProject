@@ -377,6 +377,8 @@ public class VCheckout extends JPanel {
 				buttonPanel.add(categoryButtons.get(i),categoryButtonGBC);
 			}
 			
+			buttonPanel.repaint();
+			
 			categoryButtonListener = new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					cleanupAfterCategory();
