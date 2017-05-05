@@ -73,7 +73,7 @@ public class VCheckout extends JPanel {
 
 	public void initUI(String storeLoc) {
 
-		setPreferredSize(new Dimension(1000,500));
+		setPreferredSize(new Dimension(1100,500));
 		setLayout(new GridBagLayout());
 		Border border = BorderFactory.createEtchedBorder();
 		setBorder(BorderFactory.createTitledBorder(border,storeLoc));
@@ -104,7 +104,7 @@ public class VCheckout extends JPanel {
 		add(textAreaPanel,itemListTextAreaGBC);
 		
 		buttonPanel = new JPanel();
-		buttonPanel.setPreferredSize(new Dimension(460,460));
+		buttonPanel.setPreferredSize(new Dimension(600,470));
 		buttonPanel.setLayout(new GridBagLayout());
 		GridBagConstraints buttonPanelGBC = new GridBagConstraints();
 		buttonPanelGBC.gridx = 0;
@@ -121,8 +121,8 @@ public class VCheckout extends JPanel {
 
 		for(int i = 0; i < categoryButtons.size(); i++) {
 			GridBagConstraints categoryButtonGBC = new GridBagConstraints();
-			categoryButtonGBC.gridx = i%3;
-			categoryButtonGBC.gridy = i/3;
+			categoryButtonGBC.gridx = i%4;
+			categoryButtonGBC.gridy = i/4;
 			buttonPanel.add(categoryButtons.get(i),categoryButtonGBC);
 		}
 		
@@ -211,8 +211,8 @@ public class VCheckout extends JPanel {
 
 		for(int i = 0; i < itemButtons.size(); i++) {
 			GridBagConstraints itemButtonGBC = new GridBagConstraints();
-			itemButtonGBC.gridx = i%3;
-			itemButtonGBC.gridy = i/3;
+			itemButtonGBC.gridx = i%4;
+			itemButtonGBC.gridy = i/4;
 			buttonPanel.add(itemButtons.get(i),itemButtonGBC);
 		}
 		initItemButtonListeners();
@@ -277,7 +277,7 @@ public class VCheckout extends JPanel {
 		cancelTransactionButton.addActionListener(cancelTransactionButtonListener);
 		addFoodItemButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				controllerRef.addFoodItem();
 			}
 		};
 		addFoodItemButton.addActionListener(addFoodItemButtonListener);
@@ -372,8 +372,8 @@ public class VCheckout extends JPanel {
 
 			for(int i = 0; i < categoryButtons.size(); i++) {
 				GridBagConstraints categoryButtonGBC = new GridBagConstraints();
-				categoryButtonGBC.gridx = i%3;
-				categoryButtonGBC.gridy = i/3;
+				categoryButtonGBC.gridx = i%4;
+				categoryButtonGBC.gridy = i/4;
 				buttonPanel.add(categoryButtons.get(i),categoryButtonGBC);
 			}
 			

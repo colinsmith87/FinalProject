@@ -86,6 +86,16 @@ public class CCheckout {
     	editProfile.fillInfo();
 	}
 	
+	public void addFoodItem() {
+		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
+		psuedoFrame.setPreferredSize(new Dimension(800,500));
+		psuedoFrame.setLayout(new GridBagLayout());
+		CAddItem addItem = new CAddItem(psuedoFrame,this);
+		psuedoFrame.setLocationRelativeTo(null);
+		psuedoFrame.setVisible(true);
+		addItem.setLocation(employee.getStoreLoc());
+	}
+	
 	public String getFoodItemInfo(String itemName) {
 		List<Food> food = dao.selectByItemName(itemName);
 		List<InStock> stock = inStockDAO.selectByFoodNameAndStoreLocation(itemName, employee.getStoreLoc());
