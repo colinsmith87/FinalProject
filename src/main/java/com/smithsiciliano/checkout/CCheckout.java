@@ -48,6 +48,11 @@ public class CCheckout {
 		viewRef.initListeners();
 	}
 	
+	public void removeLastItem() {
+		total = total - itemList.get(itemList.size()-1).getPrice();
+		itemList.remove(itemList.size()-1);
+	}
+	
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
@@ -114,6 +119,7 @@ public class CCheckout {
 			return food.get(0).getItemName()+"\t"+price+"\n";
 		}
 		else {	
+			viewRef.showOutOfStockError();
 			return "";
 		}
 	}
@@ -135,6 +141,7 @@ public class CCheckout {
 		transactionsDAO.insert(transactionsArray);
 		transactions.clear();
 		itemList.clear();
+		total = 0;
 	}
 	
 	public void backToCategories() {
