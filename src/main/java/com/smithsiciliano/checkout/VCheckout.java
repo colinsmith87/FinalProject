@@ -193,6 +193,9 @@ public class VCheckout extends JPanel {
 		finishButtonGBC.gridy = 0;
 		finishButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(finishButton,finishButtonGBC);
+		
+		//TODO maybe add a button for food items without a transaction
+		//TODO maybe add a remove food item button
 
 		mainFrameRef.add(this,panelGBC);
 		mainFrameRef.add(bottomPanel,bottomPanelGBC);
