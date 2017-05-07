@@ -122,15 +122,11 @@ public class VCheckout extends JPanel {
 		for(int i = 0; i < categories.size(); i++) {
 			categoryButtons.add(new JButton(categories.get(i)));
 			categoryButtons.get(i).setPreferredSize(new Dimension(150,75));
-		}
-
-		for(int i = 0; i < categoryButtons.size(); i++) {
 			GridBagConstraints categoryButtonGBC = new GridBagConstraints();
 			categoryButtonGBC.gridx = i%4;
 			categoryButtonGBC.gridy = i/4;
 			buttonPanel.add(categoryButtons.get(i),categoryButtonGBC);
 		}
-
 
 		add(buttonPanel,buttonPanelGBC);
 
@@ -219,9 +215,6 @@ public class VCheckout extends JPanel {
 		for(int i = 0; i < items.size(); i++) {
 			itemButtons.add(new JButton(items.get(i)));
 			itemButtons.get(i).setPreferredSize(new Dimension(150,75));
-		}
-
-		for(int i = 0; i < itemButtons.size(); i++) {
 			GridBagConstraints itemButtonGBC = new GridBagConstraints();
 			itemButtonGBC.gridx = i%4;
 			itemButtonGBC.gridy = i/4;
