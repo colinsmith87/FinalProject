@@ -144,6 +144,15 @@ public class CCheckout {
 		total = 0;
 	}
 	
+	public void viewAllTransactions() {
+		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
+		psuedoFrame.setPreferredSize(new Dimension(800,500));
+		psuedoFrame.setLayout(new GridBagLayout());
+		CViewAllTransactions viewTransactions = new CViewAllTransactions(psuedoFrame,this);
+		psuedoFrame.setLocationRelativeTo(null);
+		psuedoFrame.setVisible(true);
+	}
+	
 	public void backToCategories() {
 		viewRef.backToCategories(true);
 	}

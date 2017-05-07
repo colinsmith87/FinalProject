@@ -52,7 +52,7 @@ public class VCheckout extends JPanel {
 	private JButton removeLastItemButton = null;
 	private JButton cancelTransactionButton = null;
 	private JButton addFoodItemButton = null;
-	private JButton removeFoodItemButton = null;
+	private JButton addMemberButton = null;
 	private JButton viewAllTransactionsButton = null;
 	private JButton finishButton = null;
 
@@ -61,7 +61,7 @@ public class VCheckout extends JPanel {
 	private ActionListener removeLastItemButtonListener = null;
 	private ActionListener cancelTransactionButtonListener = null;
 	private ActionListener addFoodItemButtonListener = null;
-	private ActionListener removeFoodItemButtonListener = null;
+	private ActionListener addMemberButtonListener = null;
 	private ActionListener viewAllTransactionsButtonListener = null;
 	private ActionListener finishButtonListener = null;
 	private ActionListener categoryButtonListener = null;
@@ -177,12 +177,12 @@ public class VCheckout extends JPanel {
 		addFoodItemButtonGBC.insets = new Insets(5,0,5,5);
 		bottomPanel.add(addFoodItemButton,addFoodItemButtonGBC);
 
-		removeFoodItemButton = new JButton("Add Member");
-		GridBagConstraints removeFoodItemButtonGBC = new GridBagConstraints();
-		removeFoodItemButtonGBC.gridx = 6;
-		removeFoodItemButtonGBC.gridy = 0;
-		removeFoodItemButtonGBC.insets = new Insets(5,0,5,5);
-		bottomPanel.add(removeFoodItemButton,removeFoodItemButtonGBC);
+		addMemberButton = new JButton("Add Member");
+		GridBagConstraints addMemberButtonGBC = new GridBagConstraints();
+		addMemberButtonGBC.gridx = 6;
+		addMemberButtonGBC.gridy = 0;
+		addMemberButtonGBC.insets = new Insets(5,0,5,5);
+		bottomPanel.add(addMemberButton,addMemberButtonGBC);
 
 		viewAllTransactionsButton = new JButton("View All Transactions");
 		GridBagConstraints viewAllTransactionsButtonGBC = new GridBagConstraints();
@@ -310,15 +310,15 @@ public class VCheckout extends JPanel {
 			}
 		};
 		addFoodItemButton.addActionListener(addFoodItemButtonListener);
-		removeFoodItemButtonListener = new ActionListener() {
+		addMemberButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO
 			}
 		};
-		removeFoodItemButton.addActionListener(removeFoodItemButtonListener);
+		addMemberButton.addActionListener(addMemberButtonListener);
 		viewAllTransactionsButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				controllerRef.viewAllTransactions();
 			}
 		};
 		viewAllTransactionsButton.addActionListener(viewAllTransactionsButtonListener);
@@ -488,7 +488,7 @@ public class VCheckout extends JPanel {
 		removeLastItemButton.removeActionListener(removeLastItemButtonListener);
 		cancelTransactionButton.removeActionListener(cancelTransactionButtonListener);
 		addFoodItemButton.removeActionListener(addFoodItemButtonListener);
-		removeFoodItemButton.removeActionListener(removeFoodItemButtonListener);
+		addMemberButton.removeActionListener(addMemberButtonListener);
 		viewAllTransactionsButton.removeActionListener(viewAllTransactionsButtonListener);
 		finishButton.removeActionListener(finishButtonListener);
 
@@ -498,7 +498,7 @@ public class VCheckout extends JPanel {
 		removeLastItemButton.setVisible(false);
 		cancelTransactionButton.setVisible(false);
 		addFoodItemButton.setVisible(false);
-		removeFoodItemButton.setVisible(false);
+		addMemberButton.setVisible(false);
 		viewAllTransactionsButton.setVisible(false);
 		finishButton.setVisible(false);
 

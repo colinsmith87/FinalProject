@@ -5,9 +5,11 @@
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/CEnterDependents.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Employee.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/InStockDAO.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/VViewAllTransactions.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/App.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/VAddItem.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/EmployeeDAO.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/CViewAllTransactions.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/TransactionsDAO.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Transactions.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/DependentDAO.java
