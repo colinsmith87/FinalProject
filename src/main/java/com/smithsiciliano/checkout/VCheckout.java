@@ -217,7 +217,7 @@ public class VCheckout extends JPanel {
 		deleteAccountButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(deleteAccountButton,deleteAccountButtonGBC);
 
-		removeItemButton = new JButton("Remove Item");
+		removeItemButton = new JButton("Delete Item");
 		GridBagConstraints removeItemButtonGBC = new GridBagConstraints();
 		removeItemButtonGBC.gridx = 3;
 		removeItemButtonGBC.gridy = 1;
@@ -225,7 +225,7 @@ public class VCheckout extends JPanel {
 		removeItemButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(removeItemButton,removeItemButtonGBC);
 		
-		removeMemberButton = new JButton("Remove Member");
+		removeMemberButton = new JButton("Delete Member");
 		GridBagConstraints removeMemberButtonGBC = new GridBagConstraints();
 		removeMemberButtonGBC.gridx = 4;
 		removeMemberButtonGBC.gridy = 1;
@@ -397,7 +397,7 @@ public class VCheckout extends JPanel {
 		removeMemberButton.addActionListener(removeMemberButtonListener);
 		removeItemButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				controllerRef.removeItemFromSystem();
 			}
 		};
 		removeItemButton.addActionListener(removeItemButtonListener);

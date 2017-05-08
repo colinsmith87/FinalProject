@@ -179,6 +179,10 @@ public class CCheckout {
 		psuedoFrame.setVisible(true);
 	}
 	
+	public void removeItemFromSystem() {
+		
+	}
+	
 	public void backToCategories() {
 		viewRef.backToCategories(true);
 	}
