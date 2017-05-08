@@ -208,7 +208,7 @@ public class VCheckout extends JPanel {
 		finishButtonGBC.insets = new Insets(5,0,5,5);
 		finishButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(finishButton,finishButtonGBC);
-		
+
 		deleteAccountButton = new JButton("Delete Account");
 		GridBagConstraints deleteAccountButtonGBC = new GridBagConstraints();
 		deleteAccountButtonGBC.gridx = 2;
@@ -224,7 +224,7 @@ public class VCheckout extends JPanel {
 		removeItemButtonGBC.insets = new Insets(0,0,5,5);
 		removeItemButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(removeItemButton,removeItemButtonGBC);
-		
+
 		removeMemberButton = new JButton("Delete Member");
 		GridBagConstraints removeMemberButtonGBC = new GridBagConstraints();
 		removeMemberButtonGBC.gridx = 4;
@@ -232,7 +232,7 @@ public class VCheckout extends JPanel {
 		removeMemberButtonGBC.insets = new Insets(0,0,5,5);
 		removeMemberButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(removeMemberButton,removeMemberButtonGBC);
-		
+
 		viewUnpopularItemsButton = new JButton("View Unpopular Items");
 		GridBagConstraints viewUnpopularItemsButtonGBC = new GridBagConstraints();
 		viewUnpopularItemsButtonGBC.gridx = 5;
@@ -502,26 +502,34 @@ public class VCheckout extends JPanel {
 	}
 
 	public void cleanupAfterCategory() {
-		for(JButton button : categoryButtons) {
-			button.setVisible(false);;
+		if(categoryButtons!=null) {
+			for(JButton button : categoryButtons) {
+				button.setVisible(false);;
+			}
 		}
 	}
 
 	public void cleanupAfterItem() {
-		for(JButton button : itemButtons) {
-			button.setVisible(false);
+		if(itemButtons!=null) {
+			for(JButton button : itemButtons) {
+				button.setVisible(false);
+			}
+			itemButtonPanel.setVisible(false);
+			backButton.setVisible(false);
 		}
-		itemButtonPanel.setVisible(false);
-		backButton.setVisible(false);
 	}
 
 	public void cleanupAfterPayment() {
-		creditDebitButton.setVisible(false);
-		cashButton.setVisible(false);
+		if(creditDebitButton!=null) {
+			creditDebitButton.setVisible(false);
+			cashButton.setVisible(false);
+		}
 	}
 
 	public void cleanupAfterDone() {
-		doneButton.setVisible(false);
+		if(doneButton!=null) {
+			doneButton.setVisible(false);
+		}
 	}
 
 	public void cleanup() {

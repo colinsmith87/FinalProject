@@ -68,7 +68,6 @@ public class CAddItem {
 				inStockDAO.update(stockToInsert);
 			}
 		}
-		checkoutRef.cleanupAfterCategories();
 		checkoutRef.backToCategories();
 		foodToAdd.clear();
 		stocks.clear();

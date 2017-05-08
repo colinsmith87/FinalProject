@@ -183,17 +183,17 @@ public class CCheckout {
 		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
 		psuedoFrame.setPreferredSize(new Dimension(800,500));
 		psuedoFrame.setLayout(new GridBagLayout());
-		CDeleteItem deleteItem = new CDeleteItem(psuedoFrame,this);
+		CDeleteItem deleteItem = new CDeleteItem(psuedoFrame,this,store);
 		psuedoFrame.setLocationRelativeTo(null);
 		psuedoFrame.setVisible(true);
 	}
 	
 	public void backToCategories() {
-		viewRef.backToCategories(true);
-	}
-	
-	public void cleanupAfterCategories() {
 		viewRef.cleanupAfterCategory();
+		viewRef.cleanupAfterItem();
+		viewRef.cleanupAfterPayment();
+		viewRef.cleanupAfterDone();
+		viewRef.backToCategories(true);
 	}
 	
 	public void cancelTransaction() {

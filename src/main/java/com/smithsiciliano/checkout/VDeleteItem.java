@@ -67,7 +67,7 @@ public class VDeleteItem extends JPanel {
 		deleteButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controllerRef.deleteItem((String)itemsCB.getSelectedItem());
-				itemsCB.remove(itemsCB.getSelectedIndex());
+				itemsCB.removeItemAt(itemsCB.getSelectedIndex());
 			}
 		};
 		deleteButton.addActionListener(deleteButtonListener);
