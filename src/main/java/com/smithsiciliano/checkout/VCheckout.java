@@ -7,7 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -55,6 +54,10 @@ public class VCheckout extends JPanel {
 	private JButton addMemberButton = null;
 	private JButton viewAllTransactionsButton = null;
 	private JButton finishButton = null;
+	private JButton deleteAccountButton = null;
+	private JButton removeItemButton = null;
+	private JButton removeMemberButton = null;
+	private JButton viewUnpopularItemsButton = null;
 
 	private ActionListener logoutButtonListener = null;
 	private ActionListener editProfileButtonListener = null;
@@ -70,6 +73,10 @@ public class VCheckout extends JPanel {
 	private ActionListener creditDebitButtonListener = null;
 	private ActionListener cashButtonListener = null;
 	private ActionListener doneButtonListener = null;
+	private ActionListener deleteAccountButtonListener = null;
+	private ActionListener removeItemButtonListener = null;
+	private ActionListener removeMemberButtonListener = null;
+	private ActionListener viewUnpopularItemsButtonListener = null;
 
 	public VCheckout(CCheckout controllerRef, JFrame mainFrameRef) {
 		this.controllerRef = controllerRef;
@@ -143,6 +150,7 @@ public class VCheckout extends JPanel {
 		logoutButtonGBC.gridx = 0;
 		logoutButtonGBC.gridy = 0;
 		logoutButtonGBC.insets = new Insets(5,5,5,5);
+		logoutButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(logoutButton,logoutButtonGBC);
 
 		editProfileButton = new JButton("Edit Profile");
@@ -150,6 +158,7 @@ public class VCheckout extends JPanel {
 		editProfileButtonGBC.gridx = 1;
 		editProfileButtonGBC.gridy = 0;
 		editProfileButtonGBC.insets = new Insets(5,0,5,5);
+		editProfileButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(editProfileButton,editProfileButtonGBC);
 
 		removeLastItemButton = new JButton("Remove Last Item");
@@ -157,6 +166,7 @@ public class VCheckout extends JPanel {
 		removeLastItemButtonGBC.gridx = 2;
 		removeLastItemButtonGBC.gridy = 0;
 		removeLastItemButtonGBC.insets = new Insets(5,0,5,5);
+		removeLastItemButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(removeLastItemButton,removeLastItemButtonGBC);
 
 		cancelTransactionButton = new JButton("Cancel Transaction");
@@ -164,13 +174,15 @@ public class VCheckout extends JPanel {
 		cancelTransactionButtonGBC.gridx = 3;
 		cancelTransactionButtonGBC.gridy = 0;
 		cancelTransactionButtonGBC.insets = new Insets(5,0,5,5);
+		cancelTransactionButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(cancelTransactionButton,cancelTransactionButtonGBC);
 
-		addFoodItemButton = new JButton("Add Item to System");
+		addFoodItemButton = new JButton("Add/Edit Item to System");
 		GridBagConstraints addFoodItemButtonGBC = new GridBagConstraints();
 		addFoodItemButtonGBC.gridx = 5;
 		addFoodItemButtonGBC.gridy = 0;
 		addFoodItemButtonGBC.insets = new Insets(5,0,5,5);
+		addFoodItemButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(addFoodItemButton,addFoodItemButtonGBC);
 
 		addMemberButton = new JButton("Add Member");
@@ -178,6 +190,7 @@ public class VCheckout extends JPanel {
 		addMemberButtonGBC.gridx = 6;
 		addMemberButtonGBC.gridy = 0;
 		addMemberButtonGBC.insets = new Insets(5,0,5,5);
+		addMemberButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(addMemberButton,addMemberButtonGBC);
 
 		viewAllTransactionsButton = new JButton("View All Transactions");
@@ -185,6 +198,7 @@ public class VCheckout extends JPanel {
 		viewAllTransactionsButtonGBC.gridx = 4;
 		viewAllTransactionsButtonGBC.gridy = 0;
 		viewAllTransactionsButtonGBC.insets = new Insets(5,0,5,5);
+		viewAllTransactionsButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(viewAllTransactionsButton,viewAllTransactionsButtonGBC);
 
 		finishButton = new JButton("Finish");
@@ -192,10 +206,40 @@ public class VCheckout extends JPanel {
 		finishButtonGBC.gridx = 7;
 		finishButtonGBC.gridy = 0;
 		finishButtonGBC.insets = new Insets(5,0,5,5);
+		finishButtonGBC.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.add(finishButton,finishButtonGBC);
 		
-		//TODO maybe add a button for food items without a transaction
-		//TODO maybe add a remove food item button
+		deleteAccountButton = new JButton("Delete Account");
+		GridBagConstraints deleteAccountButtonGBC = new GridBagConstraints();
+		deleteAccountButtonGBC.gridx = 2;
+		deleteAccountButtonGBC.gridy = 1;
+		deleteAccountButtonGBC.insets = new Insets(0,0,5,5);
+		deleteAccountButtonGBC.fill = GridBagConstraints.HORIZONTAL;
+		bottomPanel.add(deleteAccountButton,deleteAccountButtonGBC);
+
+		removeItemButton = new JButton("Remove Item");
+		GridBagConstraints removeItemButtonGBC = new GridBagConstraints();
+		removeItemButtonGBC.gridx = 3;
+		removeItemButtonGBC.gridy = 1;
+		removeItemButtonGBC.insets = new Insets(0,0,5,5);
+		removeItemButtonGBC.fill = GridBagConstraints.HORIZONTAL;
+		bottomPanel.add(removeItemButton,removeItemButtonGBC);
+		
+		removeMemberButton = new JButton("Remove Member");
+		GridBagConstraints removeMemberButtonGBC = new GridBagConstraints();
+		removeMemberButtonGBC.gridx = 4;
+		removeMemberButtonGBC.gridy = 1;
+		removeMemberButtonGBC.insets = new Insets(0,0,5,5);
+		removeMemberButtonGBC.fill = GridBagConstraints.HORIZONTAL;
+		bottomPanel.add(removeMemberButton,removeMemberButtonGBC);
+		
+		viewUnpopularItemsButton = new JButton("View Unpopular Items");
+		GridBagConstraints viewUnpopularItemsButtonGBC = new GridBagConstraints();
+		viewUnpopularItemsButtonGBC.gridx = 5;
+		viewUnpopularItemsButtonGBC.gridy = 1;
+		viewUnpopularItemsButtonGBC.insets = new Insets(0,0,5,5);
+		viewUnpopularItemsButtonGBC.fill = GridBagConstraints.HORIZONTAL;
+		bottomPanel.add(viewUnpopularItemsButton,viewUnpopularItemsButtonGBC);
 
 		mainFrameRef.add(this,panelGBC);
 		mainFrameRef.add(bottomPanel,bottomPanelGBC);
@@ -335,6 +379,31 @@ public class VCheckout extends JPanel {
 		for(JButton button : categoryButtons) {
 			button.addActionListener(categoryButtonListener);
 		}
+		deleteAccountButtonListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controllerRef.deleteEmployee();
+				controllerRef.launchLoginScreen();
+			}
+		};
+		deleteAccountButton.addActionListener(deleteAccountButtonListener);
+		removeMemberButtonListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+			}
+		};
+		removeMemberButton.addActionListener(removeMemberButtonListener);
+		removeItemButtonListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+			}
+		};
+		removeItemButton.addActionListener(removeItemButtonListener);
+		viewUnpopularItemsButtonListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controllerRef.viewUnpopularItems();
+			}
+		};
+		viewUnpopularItemsButton.addActionListener(viewUnpopularItemsButtonListener);
 	}
 
 	public void initItemButtonListeners() {
@@ -487,6 +556,10 @@ public class VCheckout extends JPanel {
 		addMemberButton.removeActionListener(addMemberButtonListener);
 		viewAllTransactionsButton.removeActionListener(viewAllTransactionsButtonListener);
 		finishButton.removeActionListener(finishButtonListener);
+		deleteAccountButton.removeActionListener(deleteAccountButtonListener);
+		removeItemButton.removeActionListener(removeItemButtonListener);
+		removeMemberButton.removeActionListener(removeMemberButtonListener);
+		viewUnpopularItemsButton.removeActionListener(viewUnpopularItemsButtonListener);
 
 		itemListTextArea.setVisible(false);
 		logoutButton.setVisible(false);
@@ -497,6 +570,10 @@ public class VCheckout extends JPanel {
 		addMemberButton.setVisible(false);
 		viewAllTransactionsButton.setVisible(false);
 		finishButton.setVisible(false);
+		deleteAccountButton.setVisible(false);
+		removeItemButton.setVisible(false);
+		removeMemberButton.setVisible(false);
+		viewUnpopularItemsButton.setVisible(false);
 
 		bottomPanel.setVisible(false);
 		textAreaPanel.setVisible(false);

@@ -8,6 +8,8 @@ import java.util.List;
 import javax.swing.JFrame;
 
 import com.smithsiciliano.App;
+import com.smithsiciliano.dao.DependentDAO;
+import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.dao.FoodDAO;
 import com.smithsiciliano.dao.InStockDAO;
 import com.smithsiciliano.dao.TransactionsDAO;
@@ -26,6 +28,8 @@ public class CCheckout {
 	private Employee employee = null;
 	private TransactionsDAO transactionsDAO = null;
 	private InStockDAO inStockDAO = null;
+	private EmployeeDAO employeeDAO = null;
+	private DependentDAO dependentDAO = null;
 	private ArrayList<Food> itemList = null;
 	private double total = 0;
 	
@@ -40,7 +44,9 @@ public class CCheckout {
 	private void init() {
 		dao = new FoodDAO();
 		inStockDAO = new InStockDAO();
+		employeeDAO = new EmployeeDAO();
 		transactionsDAO = new TransactionsDAO();
+		dependentDAO = new DependentDAO();
 		itemList = new ArrayList<Food>();
 		transactions = new ArrayList<Transactions>();
 		viewRef = new VCheckout(this,mainFrameRef);
@@ -78,6 +84,11 @@ public class CCheckout {
 	public void launchLoginScreen() {
 		viewRef.cleanup();
 		CLogin login = new CLogin(mainFrameRef);
+	}
+	
+	public void deleteEmployee() {
+		dependentDAO.deleteByEmployeeId(employee.getEmployeeId());
+		employeeDAO.delete(employee);
 	}
 	
 	public void editProfile() {
@@ -148,7 +159,16 @@ public class CCheckout {
 		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
 		psuedoFrame.setPreferredSize(new Dimension(800,500));
 		psuedoFrame.setLayout(new GridBagLayout());
-		CViewAllTransactions viewTransactions = new CViewAllTransactions(psuedoFrame,this);
+		CViewAllTransactions viewTransactions = new CViewAllTransactions(psuedoFrame,this,false);
+		psuedoFrame.setLocationRelativeTo(null);
+		psuedoFrame.setVisible(true);
+	}
+	
+	public void viewUnpopularItems() {
+		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
+		psuedoFrame.setPreferredSize(new Dimension(800,500));
+		psuedoFrame.setLayout(new GridBagLayout());
+		CViewAllTransactions viewTransactions = new CViewAllTransactions(psuedoFrame,this,true);
 		psuedoFrame.setLocationRelativeTo(null);
 		psuedoFrame.setVisible(true);
 	}

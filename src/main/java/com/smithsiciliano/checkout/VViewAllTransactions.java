@@ -118,6 +118,20 @@ public class VViewAllTransactions extends JPanel {
 		}
 	}
 	
+	public void initUnpopularListeners() {
+		storesButtonListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cleanupStoresButtons();
+				initTransactionsView();
+				transactionView.setText(controllerRef.getUnpopularItemsByStore(((JButton)e.getSource()).getText()));
+				totalL.setText("Total:     "+controllerRef.getTotal());
+			}
+		};
+		for(int i = 0; i < storesButtons.size(); i++) {
+			storesButtons.get(i).addActionListener(storesButtonListener);
+		}
+	}
+	
 	private void cleanupTransactions() {
 		transactionView.setText("");
 		transactionView.setVisible(false);

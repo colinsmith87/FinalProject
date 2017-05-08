@@ -34,6 +34,17 @@ public class FoodDAO {
 		session.close();
 		return list;
 	}
+	
+	public List<Food> selectFoodItemsWithoutTransactionByLocation(String location) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		
+		//TODO figure out sql query
+		List<Food> list = null;
+		session.getTransaction().commit();
+		session.close();
+		return list;
+	}
 
 	public List<Food> selectByCategory(String category) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
