@@ -373,6 +373,9 @@ public class VCheckout extends JPanel {
 		categoryButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterCategory();
+				if(itemButtons!=null) {
+					cleanupAfterItem();
+				}
 				initItems(((JButton)e.getSource()).getText());
 			}
 		};
