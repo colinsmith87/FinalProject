@@ -40,7 +40,18 @@ public class FoodDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query query = session.createQuery("");
+		Query query = session.createQuery("select food "
+				+ "from Food food, InStock stock "
+				+ "where food.itemName = stock.foodName "
+				+ "and stock.storeLoc = :stock_STORELOC "
+				+ "and stock.quantity > 0 "
+				+ "and food.itemName not in "
+				+ "(select food.itemName "
+				+ "from Food food, Transactions transaction "
+				+ "where transaction.storeLoc = :transactions_STORELOC "
+				+ "and food.itemName = transaction.foodItem)");
+		query.setParameter("transactions_STORELOC", location);
+		query.setParameter("stock_STORELOC", location);
 		List<Food> list = query.list();
 		session.getTransaction().commit();
 		session.close();

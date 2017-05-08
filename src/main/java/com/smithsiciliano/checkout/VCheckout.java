@@ -106,7 +106,7 @@ public class VCheckout extends JPanel {
 		textAreaPanel.add(textAreaSP,itemListTextAreaGBC);
 		itemListTextAreaGBC.gridx = 1;
 
-		totalL = new JLabel("Total:\t");
+		totalL = new JLabel("Total:     0.00");
 		GridBagConstraints totalLGBC = new GridBagConstraints();
 		totalLGBC.gridx = 0;
 		totalLGBC.gridy = 1;
@@ -339,7 +339,7 @@ public class VCheckout extends JPanel {
 		cancelTransactionButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				itemListTextArea.setText("");
-				totalL.setText("Total:");
+				totalL.setText("Total:     0.00");
 				controllerRef.cancelTransaction();
 			}
 		};
@@ -451,7 +451,7 @@ public class VCheckout extends JPanel {
 				cleanupAfterDone();
 				controllerRef.createTransaction();
 				itemListTextArea.setText("");
-				totalL.setText("Total:");
+				totalL.setText("Total:     0.00");
 				backToCategories(true);
 			}
 		};

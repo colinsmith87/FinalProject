@@ -39,12 +39,12 @@ public class VViewAllTransactions extends JPanel {
 		this.mainFrameRef = mainFrameRef;
 	}
 	
-	public void initUI() {
+	public void initUI(String title) {
 		
 		setPreferredSize(new Dimension(650,400));
 		setLayout(new GridBagLayout());
 		Border border = BorderFactory.createEtchedBorder();
-		setBorder(BorderFactory.createTitledBorder(border,"View All Transactions"));
+		setBorder(BorderFactory.createTitledBorder(border,title));
 		GridBagConstraints panelGBC = new GridBagConstraints();
 		panelGBC.gridx = 0;
 		panelGBC.gridy = 0;
@@ -65,6 +65,10 @@ public class VViewAllTransactions extends JPanel {
 		
 		mainFrameRef.add(this,panelGBC);
 		mainFrameRef.pack();
+	}
+	
+	public void hideTotal() {
+		totalL.setVisible(false);
 	}
 	
 	public void initTransactionsView() {

@@ -33,11 +33,12 @@ public class CViewAllTransactions {
 		storesDAO = new StoresDAO();
 		foodDAO = new FoodDAO();
 		viewRef = new VViewAllTransactions(this,mainFrameRef);
-		viewRef.initUI();
 		if(!unpopular) {
+			viewRef.initUI("All Transactions");
 			viewRef.initListeners();
 		}
 		else {
+			viewRef.initUI("Items Never Purchased");
 			viewRef.initUnpopularListeners();
 		}
 	}
@@ -66,15 +67,12 @@ public class CViewAllTransactions {
 	}
 	
 	public String getUnpopularItemsByStore(String location) {
+		viewRef.hideTotal();
 		List<Stores> stores = storesDAO.selectByLocation(location);
 		List<Food> items = foodDAO.selectFoodItemsWithoutTransactionByLocation(stores.get(0));
 		String retVal = "";
 		for(Food item : items) {
-			total = total + item.getPrice();
-			String price = item.getPrice()+"";
-			price = (price.substring(0, price.indexOf(".")).length()==2) ? price : "0"+price;
-			price = (price.length()==5) ? price : price+"0";
-			retVal = retVal+item.getItemName()+"\t"+price+"\n";
+			retVal = retVal+item.getItemName()+"\n";
 		}
 		return retVal;
 	}
