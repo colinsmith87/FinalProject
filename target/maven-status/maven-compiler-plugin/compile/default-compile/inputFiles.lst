@@ -3,6 +3,7 @@
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Members.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/VEnterDependents.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/CEnterDependents.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/CDeleteItem.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Employee.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/InStockDAO.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/VViewAllTransactions.java
@@ -21,6 +22,7 @@
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Stores.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/VRegister.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/models/Dependent.java
+/home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/checkout/VDeleteItem.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/dao/StoresDAO.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/register/CRegister.java
 /home/colin/workspace/finalproject/FinalProject/src/main/java/com/smithsiciliano/login/CLogin.java

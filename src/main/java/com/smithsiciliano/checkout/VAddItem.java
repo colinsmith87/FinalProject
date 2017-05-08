@@ -332,7 +332,7 @@ public class VAddItem extends JPanel {
 		newRowButton.addActionListener(newRowButtonListener);
 	}
 	
-	public void initCBListeners(JComboBox<String> dayCB, JComboBox<String> monthCB, JComboBox<String> yearCB) {
+	public void initCBListeners(final JComboBox<String> dayCB, final JComboBox<String> monthCB, final JComboBox<String> yearCB) {
 		yearCB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Integer.parseInt((String)((JComboBox<String>)e.getSource()).getSelectedItem())%4==0 

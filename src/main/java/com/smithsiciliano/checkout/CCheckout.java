@@ -180,7 +180,12 @@ public class CCheckout {
 	}
 	
 	public void removeItemFromSystem() {
-		
+		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
+		psuedoFrame.setPreferredSize(new Dimension(800,500));
+		psuedoFrame.setLayout(new GridBagLayout());
+		CDeleteItem deleteItem = new CDeleteItem(psuedoFrame,this);
+		psuedoFrame.setLocationRelativeTo(null);
+		psuedoFrame.setVisible(true);
 	}
 	
 	public void backToCategories() {
