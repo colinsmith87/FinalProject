@@ -25,12 +25,17 @@ public class FoodDAO {
 		return list;
 	}
 
-	public List<Object> selectAllCategories() {
+	public List<String> selectAllCategories(Stores location) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		Query query = session.createQuery("select distinct itemCategory from Food");
-		List<Object> list = query.list();
+		Query query = session.createQuery("select distinct food.itemCategory "
+				+ "from Food food, InStock stock "
+				+ "where food.itemName = stock.foodName "
+				+ "and stock.storeLoc = :stock_STORELOC "
+				+ "and stock.quantity > 0");
+		query.setParameter("stock_STORELOC", location);
+		List<String> list = query.list();
 		session.getTransaction().commit();
 		session.close();
 		return list;
@@ -58,12 +63,18 @@ public class FoodDAO {
 		return list;
 	}
 
-	public List<Food> selectByCategory(String category) {
+	public List<Food> selectByCategory(String category, Stores store) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 
-		Query query = session.createQuery("from Food food where food.itemCategory=:food_ITEMCATEGORY");
+		Query query = session.createQuery("select food "
+				+ "from Food food, InStock stock "
+				+ "where food.itemCategory=:food_ITEMCATEGORY "
+				+ "and food.itemName = stock.foodName "
+				+ "and stock.storeLoc = :stock_STORELOC "
+				+ "and stock.quantity > 0");
 		query.setParameter("food_ITEMCATEGORY", category);
+		query.setParameter("stock_STORELOC", store);
 		List<Food> list = query.list();
 		session.getTransaction().commit();
 		session.close();

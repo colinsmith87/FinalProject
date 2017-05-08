@@ -70,16 +70,16 @@ public class CCheckout {
 	}
 	
 	public ArrayList<String> getCategories() {
-		List<Object> categories = dao.selectAllCategories();
+		List<String> categories = dao.selectAllCategories(store);
 		ArrayList<String> retVal = new ArrayList<String>();
-		for(Object obj : categories) {
+		for(String obj : categories) {
 			retVal.add(obj.toString());
 		}
 		return retVal;
 	}
 	
 	public ArrayList<String> getItemsStringByCategory(String category) {
-		List<Food> items = dao.selectByCategory(category);
+		List<Food> items = dao.selectByCategory(category, store);
 		ArrayList<String> retVal = new ArrayList<String>();
 		for(Food food : items) {
 			retVal.add(food.getItemName());
