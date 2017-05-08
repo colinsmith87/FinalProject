@@ -40,6 +40,9 @@ public class CDeleteItem {
 		Food food = foodDAO.selectByItemName(itemName).get(0);
 		InStock stock = inStockDAO.selectByFoodNameAndStoreLocation(food, store).get(0);
 		inStockDAO.delete(stock);
+		if(inStockDAO.selectByFoodName(food).size() == 0) {
+			foodDAO.delete(food);
+		}
 		checkoutRef.backToCategories();
 	}
 	

@@ -23,6 +23,19 @@ public class InStockDAO {
 		session.close();
 		return list;
 	}
+	
+	public List<InStock> selectByFoodName(Food food) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+
+		Query query = session.createQuery("from InStock stock "
+				+ "where stock.foodName=:stock_FOODNAME");
+		query.setParameter("stock_FOODNAME", food);
+		List<InStock> list = query.list();
+		session.getTransaction().commit();
+		session.close();
+		return list;
+	}
 
 	public List<InStock> selectByFoodNameAndStoreLocation(Food foodName, Stores storeLoc) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
