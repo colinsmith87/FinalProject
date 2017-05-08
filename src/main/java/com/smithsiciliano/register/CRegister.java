@@ -35,7 +35,7 @@ public class CRegister {
 	public void fillInfo() {
 		viewRef.fillInfo(employee.getEmployeeId(),employee.getfName(),employee.getlName(),employee.getStreet(),
 				employee.getCity(),employee.getAddState(),employee.getZip(),employee.getPhone(),employee.getDateOfBirth(),
-				employee.getSalary(),employee.getStoreLoc());
+				employee.getSalary(),employee.getStoreLoc().getsLocation());
 	}
 	
 	public void setEmployee(Employee employee) {
@@ -70,7 +70,8 @@ public class CRegister {
 	
 	public boolean save(int id, String fName, String lName, Date dob, long phone, String street, String city, 
 			String state, int zip, int salary, String location) {
-		Employee employee = new Employee(id,fName,lName,salary,phone,street,city,state,zip,dob,location);
+		Stores store = storesDAO.selectByLocation(location).get(0);
+		Employee employee = new Employee(id,fName,lName,salary,phone,street,city,state,zip,dob,store);
 		if(!update) {
 			if(employeeDAO.insert(employee)) {
 				viewRef.cleanup();

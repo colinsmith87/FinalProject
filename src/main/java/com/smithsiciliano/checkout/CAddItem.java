@@ -9,13 +9,14 @@ import com.smithsiciliano.dao.FoodDAO;
 import com.smithsiciliano.dao.InStockDAO;
 import com.smithsiciliano.models.Food;
 import com.smithsiciliano.models.InStock;
+import com.smithsiciliano.models.Stores;
 
 public class CAddItem {
 	
 	private JFrame mainFrameRef = null;
 	private CCheckout checkoutRef = null;
 	private VAddItem viewRef = null;
-	private String location = null;
+	private Stores location = null;
 	private FoodDAO foodDAO = null;
 	private InStockDAO inStockDAO = null;
 	private ArrayList<Food> foodToAdd = null;
@@ -38,13 +39,13 @@ public class CAddItem {
 		viewRef.initListeners();
 	}
 	
-	public void setLocation(String location) {
+	public void setLocation(Stores location) {
 		this.location = location;
 	}
 
 	public void addFoodItem(String itemName, String category, double price, Date sellByDate, int quantity) {
 		Food food = new Food(itemName, price, sellByDate, category);
-		InStock stock = new InStock(quantity, location, itemName);
+		InStock stock = new InStock(quantity, location, food);
 		foodToAdd.add(food);
 		stocks.add(stock);
 	}

@@ -11,9 +11,11 @@ import javax.swing.JFrame;
 
 import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.dao.FoodDAO;
+import com.smithsiciliano.dao.StoresDAO;
 import com.smithsiciliano.login.CLogin;
 import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.models.Food;
+import com.smithsiciliano.models.Stores;
 
 /**
  * Hello world!

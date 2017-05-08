@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.smithsiciliano.models.Food;
+import com.smithsiciliano.models.Stores;
 import com.smithsiciliano.util.HibernateUtil;
 
 public class FoodDAO {
@@ -35,12 +36,12 @@ public class FoodDAO {
 		return list;
 	}
 	
-	public List<Food> selectFoodItemsWithoutTransactionByLocation(String location) {
+	public List<Food> selectFoodItemsWithoutTransactionByLocation(Stores location) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		//TODO figure out sql query
-		List<Food> list = null;
+		Query query = session.createQuery("");
+		List<Food> list = query.list();
 		session.getTransaction().commit();
 		session.close();
 		return list;

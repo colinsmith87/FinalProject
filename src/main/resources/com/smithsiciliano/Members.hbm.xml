@@ -22,8 +22,8 @@
         <property name="points" type="int">
         	<column name="POINTS"/>
         </property>
-        <property name="storeLoc" type="string">
+        <many-to-one name="storeLoc" class="com.smithsiciliano.models.Stores">
         	<column name="STORELOC" length="255" not-null="true"/>
-        </property>
+        </many-to-one>
     </class>
 </hibernate-mapping>

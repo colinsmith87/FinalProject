@@ -39,12 +39,12 @@ public class CEnterDependents {
 	}
 
 	public void addDependent(String fName, String lName, String relation, long phone) {
-		Dependent dependent = new Dependent(fName,lName,relation,phone,employee.getEmployeeId());
+		Dependent dependent = new Dependent(fName,lName,relation,phone,employee);
 		dependents.add(dependent);
 	}
 	
 	public void fillInfo() {
-		List<Dependent> dependentList = dependentDAO.selectByEmployeeId(employee.getEmployeeId());
+		List<Dependent> dependentList = dependentDAO.selectByEmployeeId(employee);
 		ArrayList<String> firstNames = new ArrayList<String>();
 		ArrayList<String> lastNames = new ArrayList<String>();
 		ArrayList<String> phones = new ArrayList<String>();
@@ -75,7 +75,7 @@ public class CEnterDependents {
 			for(int i = 0; i < dependents.size(); i++) {
 				dependentsToUpdate[i] = dependents.get(i);
 			}
-			dependentDAO.updateAllByEmployeeId(dependentsToUpdate, employee.getEmployeeId());
+			dependentDAO.updateAllByEmployeeId(dependentsToUpdate, employee);
 			mainFrameRef.dispose();
 		}
 		dependents.clear();

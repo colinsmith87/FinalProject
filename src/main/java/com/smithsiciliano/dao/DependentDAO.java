@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.smithsiciliano.models.Dependent;
+import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.util.HibernateUtil;
 
 public class DependentDAO {
@@ -22,7 +23,7 @@ public class DependentDAO {
 		return list;
 	}
 	
-	public List<Dependent> selectByEmployeeId(int empId) {
+	public List<Dependent> selectByEmployeeId(Employee empId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -83,7 +84,7 @@ public class DependentDAO {
 		return retVal;
 	}
 	
-	public void updateAllByEmployeeId(Dependent[] dependents, int empId) {
+	public void updateAllByEmployeeId(Dependent[] dependents, Employee empId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		
@@ -103,7 +104,7 @@ public class DependentDAO {
 		session.close();
 	}
 	
-	public void deleteByEmployeeId(int employeeId) {
+	public void deleteByEmployeeId(Employee employeeId) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		

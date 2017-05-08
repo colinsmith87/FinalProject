@@ -11,14 +11,14 @@ public class Members implements java.io.Serializable {
 	private Date dateOfBirth;
 	private long phone;
 	private int points;
-	private String storeLoc;
+	private Stores storeLoc;
 	
 	public Members() {
 		
 	}
 	
 	public Members(String fName, String lName, Date dateOfBirth, long phone, int points,
-			String storeLoc) {
+			Stores storeLoc) {
 		this.fName = fName;
 		this.lName = lName;
 		this.dateOfBirth = dateOfBirth;
@@ -75,11 +75,11 @@ public class Members implements java.io.Serializable {
 		this.points = points;
 	}
 
-	public String getStoreLoc() {
+	public Stores getStoreLoc() {
 		return storeLoc;
 	}
 
-	public void setStoreLoc(String storeLoc) {
+	public void setStoreLoc(Stores storeLoc) {
 		this.storeLoc = storeLoc;
 	}
 }

@@ -6,7 +6,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.smithsiciliano.models.Food;
 import com.smithsiciliano.models.InStock;
+import com.smithsiciliano.models.Stores;
 import com.smithsiciliano.util.HibernateUtil;
 
 public class InStockDAO {
@@ -22,7 +24,7 @@ public class InStockDAO {
 		return list;
 	}
 
-	public List<InStock> selectByFoodNameAndStoreLocation(String foodName, String storeLoc) {
+	public List<InStock> selectByFoodNameAndStoreLocation(Food foodName, Stores storeLoc) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 

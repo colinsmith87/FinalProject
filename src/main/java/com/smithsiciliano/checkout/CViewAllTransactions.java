@@ -52,20 +52,22 @@ public class CViewAllTransactions {
 	}
 	
 	public String getTransactionListByStore(String location) {
-		List<Transactions> transactions = transactionsDAO.selectByLocation(location);
+		List<Stores> stores = storesDAO.selectByLocation(location);
+		List<Transactions> transactions = transactionsDAO.selectByLocation(stores.get(0));
 		String retVal = "";
 		for(Transactions transaction : transactions) {
 			total = total + transaction.getPrice();
 			String price = transaction.getPrice()+"";
 			price = (price.substring(0, price.indexOf(".")).length()==2) ? price : "0"+price;
 			price = (price.length()==5) ? price : price+"0";
-			retVal = retVal+transaction.getFoodItem()+"\t"+price+"\n";
+			retVal = retVal+transaction.getFoodItem().getItemName()+"\t"+price+"\n";
 		}
 		return retVal;
 	}
 	
 	public String getUnpopularItemsByStore(String location) {
-		List<Food> items = foodDAO.selectFoodItemsWithoutTransactionByLocation(location);
+		List<Stores> stores = storesDAO.selectByLocation(location);
+		List<Food> items = foodDAO.selectFoodItemsWithoutTransactionByLocation(stores.get(0));
 		String retVal = "";
 		for(Food item : items) {
 			total = total + item.getPrice();

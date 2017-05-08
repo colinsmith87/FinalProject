@@ -16,14 +16,14 @@ public class Employee implements java.io.Serializable {
 	private String addState;
 	private int zip;
 	private Date dateOfBirth;
-	private String storeLoc;
+	private Stores storeLoc;
 	
 	public Employee() {
 		
 	}
 
 	public Employee(int employeeId, String fName, String lName, int salary, long phone, String street, String city,
-			String addState, int zip, Date dateOfBirth, String storeLoc) {
+			String addState, int zip, Date dateOfBirth, Stores storeLoc) {
 		this.employeeId = employeeId;
 		this.fName = fName;
 		this.lName = lName;
@@ -109,11 +109,11 @@ public class Employee implements java.io.Serializable {
 		this.zip = zip;
 	}
 
-	public String getStoreLoc() {
+	public Stores getStoreLoc() {
 		return storeLoc;
 	}
 
-	public void setStoreLoc(String storeLoc) {
+	public void setStoreLoc(Stores storeLoc) {
 		this.storeLoc = storeLoc;
 	}
 

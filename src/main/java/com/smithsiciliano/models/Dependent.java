@@ -7,13 +7,13 @@ public class Dependent implements java.io.Serializable {
 	private String lName;
 	private String relation;
 	private long phone;
-	private int empId;
+	private Employee empId;
 	
 	public Dependent() {
 		
 	}
 
-	public Dependent(String fName, String lName, String relation, long phone, int empId) {
+	public Dependent(String fName, String lName, String relation, long phone, Employee empId) {
 		this.fName = fName;
 		this.lName = lName;
 		this.relation = relation;
@@ -53,11 +53,11 @@ public class Dependent implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	public int getEmpId() {
+	public Employee getEmpId() {
 		return empId;
 	}
 
-	public void setEmpId(int empId) {
+	public void setEmpId(Employee empId) {
 		this.empId = empId;
 	}
 }

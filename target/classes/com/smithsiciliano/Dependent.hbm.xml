@@ -4,9 +4,9 @@
 <hibernate-mapping>
 	<class name="com.smithsiciliano.models.Dependent" table="DEPENDENT">
 		<composite-id>
-			<key-property name="empId" type="int">
+			<key-many-to-one name="empId" class="com.smithsiciliano.models.Employee">
 				<column name="EMPID" length="4" not-null="true" />
-			</key-property>
+			</key-many-to-one>
 			<key-property name="fName" type="string">
 				<column name="FNAME" length="255" not-null="true" />
 			</key-property>

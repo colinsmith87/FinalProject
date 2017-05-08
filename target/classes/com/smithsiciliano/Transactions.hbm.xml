@@ -10,12 +10,12 @@
 		<property name="price" type="double">
 			<column name="PRICE" precision="4" scale="2" not-null="true" />
 		</property>
-		<property name="storeLoc" type="string">
+		<many-to-one name="storeLoc" class="com.smithsiciliano.models.Stores">
 			<column name="STORELOC" length="255" not-null="true" />
-		</property>
-		<property name="foodItem" type="string">
+		</many-to-one>
+		<many-to-one name="foodItem" class="com.smithsiciliano.models.Food">
 			<column name="FOODITEM" length="255" not-null="true" />
-		</property>
+		</many-to-one>
 
 	</class>
 </hibernate-mapping>

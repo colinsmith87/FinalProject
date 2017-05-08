@@ -4,14 +4,14 @@ package com.smithsiciliano.models;
 public class InStock implements java.io.Serializable {
 	
 	private int quantity;
-	private String storeLoc;
-	private String foodName;
+	private Stores storeLoc;
+	private Food foodName;
 	
 	public InStock() {
 		
 	}
 
-	public InStock(int quantity, String storeLoc, String foodName) {
+	public InStock(int quantity, Stores storeLoc, Food foodName) {
 		this.quantity = quantity;
 		this.storeLoc = storeLoc;
 		this.foodName = foodName;
@@ -25,19 +25,19 @@ public class InStock implements java.io.Serializable {
 		this.quantity = quantity;
 	}
 
-	public String getStoreLoc() {
+	public Stores getStoreLoc() {
 		return storeLoc;
 	}
 
-	public void setStoreLoc(String storeLoc) {
+	public void setStoreLoc(Stores storeLoc) {
 		this.storeLoc = storeLoc;
 	}
 
-	public String getFoodName() {
+	public Food getFoodName() {
 		return foodName;
 	}
 
-	public void setFoodName(String foodName) {
+	public void setFoodName(Food foodName) {
 		this.foodName = foodName;
 	}
 }

@@ -4,12 +4,12 @@
 <hibernate-mapping>
 	<class name="com.smithsiciliano.models.InStock" table="IN_STOCK">
 		<composite-id>
-			<key-property name="foodName" type="string">
+			<key-many-to-one name="foodName" class="com.smithsiciliano.models.Food">
 				<column name="FOODNAME" length="255" not-null="true" />
-			</key-property>
-			<key-property name="storeLoc" type="string">
+			</key-many-to-one>
+			<key-many-to-one name="storeLoc" class="com.smithsiciliano.models.Stores">
 				<column name="STORELOC" length="255" not-null="true"/>
-			</key-property>
+			</key-many-to-one>
 		</composite-id>
 		<property name="quantity" type="int">
 			<column name="QUANTITY"/>

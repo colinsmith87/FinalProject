@@ -5,14 +5,14 @@ public class Transactions implements java.io.Serializable {
 	
 	private int transactionId;
 	private double price;
-	private String foodItem;
-	private String storeLoc;
+	private Food foodItem;
+	private Stores storeLoc;
 	
 	public Transactions() {
 		
 	}
 
-	public Transactions(double price, String foodItem, String storeLoc) {
+	public Transactions(double price, Food foodItem, Stores storeLoc) {
 		this.price = price;
 		this.foodItem = foodItem;
 		this.storeLoc = storeLoc;
@@ -26,19 +26,19 @@ public class Transactions implements java.io.Serializable {
 		this.price = price;
 	}
 
-	public String getFoodItem() {
+	public Food getFoodItem() {
 		return foodItem;
 	}
 
-	public void setFoodItem(String foodItem) {
+	public void setFoodItem(Food foodItem) {
 		this.foodItem = foodItem;
 	}
 
-	public String getStoreLoc() {
+	public Stores getStoreLoc() {
 		return storeLoc;
 	}
 
-	public void setStoreLoc(String storeLoc) {
+	public void setStoreLoc(Stores storeLoc) {
 		this.storeLoc = storeLoc;
 	}
 	

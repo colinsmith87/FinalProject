@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.smithsiciliano.models.Stores;
 import com.smithsiciliano.models.Transactions;
 import com.smithsiciliano.util.HibernateUtil;
 
@@ -22,7 +23,7 @@ public class TransactionsDAO {
 		return list;
 	}
 	
-	public List<Transactions> selectByLocation(String sLocation) {
+	public List<Transactions> selectByLocation(Stores sLocation) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		

@@ -12,11 +12,13 @@ import com.smithsiciliano.dao.DependentDAO;
 import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.dao.FoodDAO;
 import com.smithsiciliano.dao.InStockDAO;
+import com.smithsiciliano.dao.StoresDAO;
 import com.smithsiciliano.dao.TransactionsDAO;
 import com.smithsiciliano.login.CLogin;
 import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.models.Food;
 import com.smithsiciliano.models.InStock;
+import com.smithsiciliano.models.Stores;
 import com.smithsiciliano.models.Transactions;
 import com.smithsiciliano.register.CRegister;
 
@@ -26,10 +28,12 @@ public class CCheckout {
 	private VCheckout viewRef = null;
 	private FoodDAO dao = null;
 	private Employee employee = null;
+	private Stores store = null;
 	private TransactionsDAO transactionsDAO = null;
 	private InStockDAO inStockDAO = null;
 	private EmployeeDAO employeeDAO = null;
 	private DependentDAO dependentDAO = null;
+	private StoresDAO storesDAO = null;
 	private ArrayList<Food> itemList = null;
 	private double total = 0;
 	
@@ -47,10 +51,12 @@ public class CCheckout {
 		employeeDAO = new EmployeeDAO();
 		transactionsDAO = new TransactionsDAO();
 		dependentDAO = new DependentDAO();
+		storesDAO = new StoresDAO();
 		itemList = new ArrayList<Food>();
 		transactions = new ArrayList<Transactions>();
+		store = storesDAO.selectByLocation(employee.getStoreLoc().getsLocation()).get(0);
 		viewRef = new VCheckout(this,mainFrameRef);
-		viewRef.initUI(employee.getStoreLoc());
+		viewRef.initUI(employee.getStoreLoc().getsLocation());
 		viewRef.initListeners();
 	}
 	
@@ -87,7 +93,7 @@ public class CCheckout {
 	}
 	
 	public void deleteEmployee() {
-		dependentDAO.deleteByEmployeeId(employee.getEmployeeId());
+		dependentDAO.deleteByEmployeeId(employee);
 		employeeDAO.delete(employee);
 	}
 	
@@ -109,19 +115,19 @@ public class CCheckout {
 		CAddItem addItem = new CAddItem(psuedoFrame,this);
 		psuedoFrame.setLocationRelativeTo(null);
 		psuedoFrame.setVisible(true);
-		addItem.setLocation(employee.getStoreLoc());
+		addItem.setLocation(store);
 	}
 	
 	public String getFoodItemInfo(String itemName) {
 		List<Food> food = dao.selectByItemName(itemName);
-		List<InStock> stock = inStockDAO.selectByFoodNameAndStoreLocation(itemName, employee.getStoreLoc());
+		List<InStock> stock = inStockDAO.selectByFoodNameAndStoreLocation(food.get(0), employee.getStoreLoc());
 		int count = 0;
 		for(Food item : itemList) {
 			if(item.getItemName().equals(itemName)) {
 				count++;
 			}
 		}
-		if(count < stock.get(0).getQuantity()) {
+		if(!stock.isEmpty() && count < stock.get(0).getQuantity()) {
 			itemList.add(food.get(0));
 			String price = food.get(0).getPrice()+"";
 			total = total+food.get(0).getPrice();
@@ -143,7 +149,7 @@ public class CCheckout {
 	
 	public void createTransaction() {
 		for(Food food : itemList) {
-			transactions.add(new Transactions(food.getPrice(),food.getItemName(),employee.getStoreLoc()));
+			transactions.add(new Transactions(food.getPrice(),food,store));
 		}
 		Transactions[] transactionsArray = new Transactions[transactions.size()];
 		for(int i = 0; i < transactionsArray.length; i++) {
