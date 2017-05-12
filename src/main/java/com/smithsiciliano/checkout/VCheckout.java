@@ -92,7 +92,7 @@ public class VCheckout extends JPanel {
 
 	public void initUI(String storeLoc) {
 
-		setPreferredSize(new Dimension(1100,500));
+		setPreferredSize(new Dimension(1100,550));
 		setLayout(new GridBagLayout());
 		Border border = BorderFactory.createEtchedBorder();
 		setBorder(BorderFactory.createTitledBorder(border,storeLoc));
@@ -123,7 +123,7 @@ public class VCheckout extends JPanel {
 		add(textAreaPanel,itemListTextAreaGBC);
 
 		buttonPanel = new JPanel();
-		buttonPanel.setPreferredSize(new Dimension(600,470));
+		buttonPanel.setPreferredSize(new Dimension(650,500));
 		buttonPanel.setLayout(new GridBagLayout());
 		GridBagConstraints buttonPanelGBC = new GridBagConstraints();
 		buttonPanelGBC.gridx = 0;
