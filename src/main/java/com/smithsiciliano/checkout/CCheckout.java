@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.smithsiciliano.App;
 import com.smithsiciliano.dao.DependentDAO;
@@ -224,14 +225,16 @@ public class CCheckout {
 	}
 	
 	public int updateMemberPoints(int memberId){
-		Members oldMember = membersDAO.selectByMemberId(memberId).get(0);
-		Members newMember = membersDAO.selectByMemberId(memberId).get(0);
-		if(newMember == null){
-			return -1;
+		List<Members> list = membersDAO.selectByMemberId(memberId);
+		if (list.size() > 0) {
+			Members oldMember = list.get(0);
+			Members newMember = membersDAO.selectByMemberId(memberId).get(0);
+
+			newMember.setPoints(newMember.getPoints() + itemList.size());
+			membersDAO.update(oldMember, newMember);
+
+			return newMember.getPoints();
 		}
-		newMember.setPoints(newMember.getPoints()+itemList.size());
-		membersDAO.update(oldMember, newMember);
-		
-		return newMember.getPoints();
+		return -1;
 	}
 }

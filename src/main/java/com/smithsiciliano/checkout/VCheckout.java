@@ -505,6 +505,9 @@ public class VCheckout extends JPanel {
 					cleanupAfterMember();
 					initDone();
 				}
+				else{
+					JOptionPane.showMessageDialog(VCheckout.this, "Invalid Member Id.","Grocery Store Management System",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		};
 		memberIdButton.addActionListener(memberIdButtonListener);

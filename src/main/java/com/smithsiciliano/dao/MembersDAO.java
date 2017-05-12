@@ -55,7 +55,7 @@ public class MembersDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
 		try {
-			Query query = session.createQuery("from Members member where member.memberId=:member_MEMBERID");
+			Query query = session.createQuery("from Members members where members.memberId=:member_MEMBERID");
 			query.setParameter("member_MEMBERID", oldMember.getMemberId());
 			List<Members> list = query.list();
 			

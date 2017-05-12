@@ -1,5 +1,7 @@
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/models/Dependent.java
+/home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/checkout/CAddMember.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/register/CRegister.java
+/home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/checkout/CDeleteMember.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/dao/TransactionsDAO.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/models/Employee.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/dao/StoresDAO.java
@@ -26,5 +28,7 @@
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/checkout/CAddItem.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/login/VLogin.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/checkout/VAddItem.java
+/home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/checkout/VAddMember.java
+/home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/checkout/VDeleteMember.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/register/VEnterDependents.java
 /home/tony/Documents/DBs/finalProject/FinalProject/src/main/java/com/smithsiciliano/dao/FoodDAO.java

@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -83,7 +84,13 @@ public class VDeleteMember extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				MembersDAO membersDAO = new MembersDAO();
 				List<Members> list = membersDAO.selectByMemberId(Integer.parseInt(idTF.getText()));
-				controllerRef.deleteMember(list.get(0));
+				if(list.size() > 0){
+					controllerRef.deleteMember(list.get(0));
+					JOptionPane.showMessageDialog(VDeleteMember.this, "Member "+list.get(0).getMemberId()+" Was Deleted.","Grocery Store Management System",JOptionPane.INFORMATION_MESSAGE);
+				}
+				else{
+					JOptionPane.showMessageDialog(VDeleteMember.this, "Incorrect Member Id","Grocery Store Management System",JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		};
 		deleteButton.addActionListener(deleteButtonListener);
