@@ -12,12 +12,14 @@ import com.smithsiciliano.dao.DependentDAO;
 import com.smithsiciliano.dao.EmployeeDAO;
 import com.smithsiciliano.dao.FoodDAO;
 import com.smithsiciliano.dao.InStockDAO;
+import com.smithsiciliano.dao.MembersDAO;
 import com.smithsiciliano.dao.StoresDAO;
 import com.smithsiciliano.dao.TransactionsDAO;
 import com.smithsiciliano.login.CLogin;
 import com.smithsiciliano.models.Employee;
 import com.smithsiciliano.models.Food;
 import com.smithsiciliano.models.InStock;
+import com.smithsiciliano.models.Members;
 import com.smithsiciliano.models.Stores;
 import com.smithsiciliano.models.Transactions;
 import com.smithsiciliano.register.CRegister;
@@ -34,6 +36,7 @@ public class CCheckout {
 	private EmployeeDAO employeeDAO = null;
 	private DependentDAO dependentDAO = null;
 	private StoresDAO storesDAO = null;
+	private MembersDAO membersDAO = null;
 	private ArrayList<Food> itemList = null;
 	private double total = 0;
 	
@@ -52,6 +55,7 @@ public class CCheckout {
 		transactionsDAO = new TransactionsDAO();
 		dependentDAO = new DependentDAO();
 		storesDAO = new StoresDAO();
+		membersDAO = new MembersDAO();
 		itemList = new ArrayList<Food>();
 		transactions = new ArrayList<Transactions>();
 		store = storesDAO.selectByLocation(employee.getStoreLoc().getsLocation()).get(0);
@@ -106,6 +110,15 @@ public class CCheckout {
     	psuedoFrame.setVisible(true);
     	editProfile.setEmployee(employee);
     	editProfile.fillInfo();
+	}
+	
+	public void addMember() {
+		JFrame psuedoFrame = new JFrame("Grocery Store Member System");
+		psuedoFrame.setPreferredSize(new Dimension(800,500));
+		psuedoFrame.setLayout(new GridBagLayout());
+    	CAddMember addMember = new CAddMember(psuedoFrame,this);
+    	psuedoFrame.setLocationRelativeTo(null);
+    	psuedoFrame.setVisible(true);
 	}
 	
 	public void addFoodItem() {
@@ -188,6 +201,15 @@ public class CCheckout {
 		psuedoFrame.setVisible(true);
 	}
 	
+	public void removeMemberFromSystem() {
+		JFrame psuedoFrame = new JFrame("Grocery Store Management System");
+		psuedoFrame.setPreferredSize(new Dimension(800,500));
+		psuedoFrame.setLayout(new GridBagLayout());
+		CDeleteMember deleteMember = new CDeleteMember(psuedoFrame,this,store);
+		psuedoFrame.setLocationRelativeTo(null);
+		psuedoFrame.setVisible(true);
+	}
+	
 	public void backToCategories() {
 		viewRef.cleanupAfterCategory();
 		viewRef.cleanupAfterItem();
@@ -199,5 +221,17 @@ public class CCheckout {
 	public void cancelTransaction() {
 		itemList.clear();
 		total = 0;
+	}
+	
+	public int updateMemberPoints(int memberId){
+		Members oldMember = membersDAO.selectByMemberId(memberId).get(0);
+		Members newMember = membersDAO.selectByMemberId(memberId).get(0);
+		if(newMember == null){
+			return -1;
+		}
+		newMember.setPoints(newMember.getPoints()+itemList.size());
+		membersDAO.update(oldMember, newMember);
+		
+		return newMember.getPoints();
 	}
 }

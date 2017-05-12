@@ -10,15 +10,18 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 
 import com.smithsiciliano.App;
+import com.smithsiciliano.models.Members;
 
 public class VCheckout extends JPanel {
 
@@ -77,6 +80,10 @@ public class VCheckout extends JPanel {
 	private ActionListener removeItemButtonListener = null;
 	private ActionListener removeMemberButtonListener = null;
 	private ActionListener viewUnpopularItemsButtonListener = null;
+	private JTextField memberIdTF;
+	private JLabel memberIdL;
+	private JButton memberIdButton;
+	private ActionListener memberIdButtonListener;
 
 	public VCheckout(CCheckout controllerRef, JFrame mainFrameRef) {
 		this.controllerRef = controllerRef;
@@ -309,6 +316,34 @@ public class VCheckout extends JPanel {
 		buttonPanel.add(doneButton, doneButtonGBC);
 		initDoneButtonListeners();
 	}
+	
+	public void initPoints(){
+		memberIdTF = new JTextField();
+		memberIdTF.setPreferredSize(new Dimension(100,20));
+		GridBagConstraints idTFGBC = new GridBagConstraints();
+		idTFGBC.gridx = 1;
+		idTFGBC.gridy = 0;
+		idTFGBC.insets = new Insets(5,0,0,0);
+		idTFGBC.anchor = GridBagConstraints.WEST;
+		buttonPanel.add(memberIdTF,idTFGBC);
+		
+		memberIdL = new JLabel("Member ID:");
+		GridBagConstraints idLGBC = new GridBagConstraints();
+		idLGBC.gridx = 0;
+		idLGBC.gridy = 0;
+		idLGBC.insets = new Insets(5,0,0,5);
+		idLGBC.anchor = GridBagConstraints.WEST;
+		buttonPanel.add(memberIdL,idLGBC);		
+		
+		memberIdButton = new JButton("Submit");
+		memberIdButton.setPreferredSize(new Dimension(100,50));
+		GridBagConstraints creditDebitButtonGBC = new GridBagConstraints();
+		creditDebitButtonGBC.gridx = 0;
+		creditDebitButtonGBC.gridy = 1;
+		buttonPanel.add(memberIdButton,creditDebitButtonGBC);
+
+		initMemberButtonListeners();
+	}
 
 	public void initListeners() {
 		logoutButtonListener = new ActionListener() {
@@ -352,7 +387,7 @@ public class VCheckout extends JPanel {
 		addFoodItemButton.addActionListener(addFoodItemButtonListener);
 		addMemberButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				controllerRef.addMember();
 			}
 		};
 		addMemberButton.addActionListener(addMemberButtonListener);
@@ -391,7 +426,7 @@ public class VCheckout extends JPanel {
 		deleteAccountButton.addActionListener(deleteAccountButtonListener);
 		removeMemberButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				controllerRef.removeMemberFromSystem();
 			}
 		};
 		removeMemberButton.addActionListener(removeMemberButtonListener);
@@ -434,7 +469,7 @@ public class VCheckout extends JPanel {
 		creditDebitButtonListener = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cleanupAfterPayment();
-				initDone();
+				initPoints();
 			}
 		};
 		creditDebitButton.addActionListener(creditDebitButtonListener);
@@ -459,6 +494,21 @@ public class VCheckout extends JPanel {
 			}
 		};
 		doneButton.addActionListener(doneButtonListener);
+	}
+	
+	public void initMemberButtonListeners(){
+		memberIdButtonListener = new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int memberPoints = controllerRef.updateMemberPoints(Integer.parseInt(memberIdTF.getText()));
+				if(memberPoints != -1){
+					JOptionPane.showMessageDialog(VCheckout.this, "Your New Total Member Points: "+memberPoints,"Grocery Store Management System",JOptionPane.INFORMATION_MESSAGE);
+					cleanupAfterMember();
+					initDone();
+				}
+			}
+		};
+		memberIdButton.addActionListener(memberIdButtonListener);
+	
 	}
 
 	public void backToCategories(boolean done) {
@@ -529,6 +579,14 @@ public class VCheckout extends JPanel {
 	public void cleanupAfterDone() {
 		if(doneButton!=null) {
 			doneButton.setVisible(false);
+		}
+	}
+	
+	public void cleanupAfterMember() {
+		if(memberIdButton!=null) {
+			memberIdButton.setVisible(false);
+			memberIdL.setVisible(false);
+			memberIdTF.setVisible(false);
 		}
 	}
 
